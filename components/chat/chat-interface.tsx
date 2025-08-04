@@ -237,7 +237,7 @@ export function ChatInterface() {
             <Button
               type="submit"
               size="icon"
-              disabled={!input.trim() || isLoading}
+              disabled={!input || isLoading}
               className="bg-primary hover:bg-primary/90 rounded-full w-10 h-10 flex-shrink-0"
             >
               <Send className="w-4 h-4" />

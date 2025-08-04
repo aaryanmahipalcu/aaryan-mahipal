@@ -68,26 +68,11 @@ export function HeroSection() {
                     const chatInput = document.querySelector('input[placeholder*="ask about"]') as HTMLInputElement
                     if (chatInput) {
                       chatInput.focus()
-                      chatInput.value = "/about"
                     }
                   }}
                 >
-                  learn about me
+                  start chatting
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="px-8 py-3 text-lg bg-transparent"
-                  onClick={() => {
-                    const chatInput = document.querySelector('input[placeholder*="ask about"]') as HTMLInputElement
-                    if (chatInput) {
-                      chatInput.focus()
-                      chatInput.value = "/work"
-                    }
-                  }}
-                >
-                  view my work
                 </Button>
               </div>
             </AnimatedSection>
@@ -99,14 +84,7 @@ export function HeroSection() {
                   {["/about", "/work", "/play", "/writing", "/contact"].map((command) => (
                     <code
                       key={command}
-                      className="px-2 py-1 bg-muted rounded text-xs font-mono cursor-pointer hover:bg-primary/10 transition-colors"
-                      onClick={() => {
-                        const chatInput = document.querySelector('input[placeholder*="ask about"]') as HTMLInputElement
-                        if (chatInput) {
-                          chatInput.focus()
-                          chatInput.value = command
-                        }
-                      }}
+                      className="px-2 py-1 bg-muted rounded text-xs font-mono"
                     >
                       {command}
                     </code>
