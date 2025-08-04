@@ -7,6 +7,7 @@ import { getProjectBySlug } from "@/lib/data"
 import { notFound } from "next/navigation"
 import { EnhancedScrollIndicator } from "@/components/enhanced-scroll-indicator"
 import { AnimatedSection } from "@/components/animated-section"
+import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
 import { Breadcrumb } from "@/components/breadcrumb"
 
 interface ProjectPageProps {
@@ -207,6 +208,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
       {/* Scroll to Top Button */}
       <EnhancedScrollIndicator />
+
+      {/* Liquid Glass Shortcuts */}
+      <LiquidGlassShortcuts />
     </main>
   )
 }

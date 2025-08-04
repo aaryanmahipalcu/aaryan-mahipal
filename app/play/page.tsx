@@ -1,5 +1,6 @@
 import { Breadcrumb } from "@/components/breadcrumb"
 import { AnimatedSection } from "@/components/animated-section"
+import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
 import { Card, CardContent } from "@/components/ui/card"
 import { Gamepad2 } from "lucide-react"
 
@@ -24,6 +25,9 @@ export default function PlayPage() {
           </Card>
         </AnimatedSection>
       </div>
+
+      {/* Liquid Glass Shortcuts */}
+      <LiquidGlassShortcuts />
     </main>
   )
 }

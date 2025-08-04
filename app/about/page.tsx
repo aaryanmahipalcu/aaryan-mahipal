@@ -2,6 +2,7 @@ import { Breadcrumb } from "@/components/breadcrumb"
 import { EnhancedProfile } from "@/components/enhanced-profile"
 import { ExperienceCard } from "@/components/experience-card"
 import { AnimatedSection } from "@/components/animated-section"
+import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
 import { Card, CardContent } from "@/components/ui/card"
 import { BriefcaseIcon } from "lucide-react"
 import { getExperienceInfo } from "@/lib/data"
@@ -52,6 +53,9 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+
+      {/* Liquid Glass Shortcuts */}
+      <LiquidGlassShortcuts />
     </main>
   )
 }

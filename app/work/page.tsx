@@ -1,6 +1,7 @@
 import { Breadcrumb } from "@/components/breadcrumb"
 import { ProjectCard } from "@/components/project-card"
 import { AnimatedSection } from "@/components/animated-section"
+import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
 import { Card, CardContent } from "@/components/ui/card"
 import { Briefcase } from "lucide-react"
 import { getAllProjects } from "@/lib/data"
@@ -37,6 +38,9 @@ export default function WorkPage() {
           </Card>
         </AnimatedSection>
       </div>
+
+      {/* Liquid Glass Shortcuts */}
+      <LiquidGlassShortcuts />
     </main>
   )
 }

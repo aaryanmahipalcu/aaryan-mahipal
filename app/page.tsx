@@ -1,7 +1,6 @@
 import { getAllProjects } from "@/lib/data"
 import { EnhancedScrollIndicator } from "@/components/enhanced-scroll-indicator"
 import { HeroSection } from "@/components/hero-section"
-import { VinylPlayer } from "@/components/vinyl-player"
 import { getExperienceInfo, getTechnicalSkillsInfo } from "@/lib/data"
 
 export default function Home() {
@@ -11,9 +10,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      {/* Vinyl Music Player */}
-      <VinylPlayer />
-
       {/* Hero Section with Chat */}
       <HeroSection />
 

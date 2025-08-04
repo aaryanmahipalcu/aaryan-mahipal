@@ -1,6 +1,7 @@
 import { Breadcrumb } from "@/components/breadcrumb"
 import { ContactForm } from "@/components/contact-form"
 import { AnimatedSection } from "@/components/animated-section"
+import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
 import { Card, CardContent } from "@/components/ui/card"
 import { SocialLinks } from "@/components/social-links"
 import { UserIcon, Mail, Phone, MapPin, Clock } from "lucide-react"
@@ -92,6 +93,9 @@ export default function ContactPage() {
           </Card>
         </AnimatedSection>
       </div>
+
+      {/* Liquid Glass Shortcuts */}
+      <LiquidGlassShortcuts />
     </main>
   )
 }
