@@ -10,7 +10,7 @@ import { getPersonalInfo } from "@/lib/data"
 export function HeroSection() {
   const personalInfo = getPersonalInfo()
 
-  const typingTexts = ["product designer", "ux researcher", "creative problem solver", "digital storyteller"]
+  const typingTexts = ["mechanical engineer", "product lead", "data analyst", "operations specialist"]
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">

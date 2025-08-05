@@ -60,7 +60,7 @@ const projects: Project[] = [
       { url: "/job-finder-screen4.png", caption: "Application Tracking Dashboard" },
     ],
     timeline: "3 months (Q2 2023)",
-    role: "Lead Product Designer",
+    role: "Lead Product Manager",
     liveUrl: "https://example.com/job-finder",
     githubUrl: "https://github.com/example/job-finder",
     relatedProjects: [
@@ -109,7 +109,7 @@ const projects: Project[] = [
       { url: "/finance-dashboard-screen4.png", caption: "Financial Goals Tracker" },
     ],
     timeline: "4 months (Q3-Q4 2022)",
-    role: "UX/UI Designer & Frontend Developer",
+    role: "Product Manager & Data Analyst",
     liveUrl: "https://example.com/finance-dashboard",
     githubUrl: "https://github.com/example/finance-dashboard",
     relatedProjects: [
@@ -159,7 +159,7 @@ const projects: Project[] = [
     ],
     client: "Fashion Retailer Inc.",
     timeline: "6 months (Q1-Q2 2022)",
-    role: "Lead UX Designer",
+    role: "Product Strategy Lead",
     liveUrl: "https://example.com/fashion-retailer",
     relatedProjects: [
       {

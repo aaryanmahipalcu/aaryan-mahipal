@@ -1,47 +1,47 @@
 {
   "meta": {
-    "title": "Jane Doe | Product Designer",
-    "description": "Portfolio website showcasing product design work and skills"
+    "title": "Aaryan Mahipal | Portfolio",
+    "description": "Portfolio website showcasing mechanical engineering, product management, and data analysis work"
   },
   "personal": {
-    "name": "Jane Doe",
-    "title": "Product Designer",
-    "location": "San Francisco, CA",
-    "avatar": "/confident-professional.png",
-    "email": "jane.doe@example.com",
-    "phone": "+1 (415) 555-2671",
-    "workingHours": "Monday - Friday, 9am - 5pm PST",
+    "name": "Aaryan Mahipal",
+    "title": "Mechanical Engineer & Product Lead",
+    "location": "New York, NY",
+    "avatar": "/profile-image.jpg",
+    "email": "aaryan.mahipal@example.com",
+    "phone": "+1 (555) 123-4567",
+    "workingHours": "Monday - Friday, 9am - 6pm EST",
     "availableForWork": true,
-    "badges": ["UI/UX", "Product Design", "Prototyping"],
+    "badges": ["Product Management", "Data Analysis", "Operations"],
     "social": [
       {
         "platform": "GitHub",
-        "url": "#",
+        "url": "https://github.com/aaryanmahipalcu",
         "icon": "Github"
       },
       {
         "platform": "LinkedIn",
-        "url": "#",
+        "url": "https://www.linkedin.com/in/aaryan-mahipal/",
         "icon": "Linkedin"
       },
       {
         "platform": "Twitter",
-        "url": "#",
+        "url": "https://x.com/aaryanmahipal",
         "icon": "Twitter"
       },
       {
         "platform": "Instagram",
-        "url": "#",
+        "url": "https://www.instagram.com/itsaaryanmahipal/",
         "icon": "Instagram"
       }
     ]
   },
   "about": {
-    "bio": "I create user-centered digital experiences that solve real problems. Passionate about accessibility and ethical design with over 5 years of experience in product design and user experience research.",
+    "bio": "Aaryan Mahipal is a mechanical engineer working at the intersection of health, education, and product innovation. He has built AI-powered tools, health tech startups, and renewable energy projects. His vision is to solve real-world problems through technology and create inclusive solutions. Based in New York, he believes in constant experimentation and lifelong learning.",
     "focus": [
-      "Creating intuitive and accessible digital products",
-      "Leading design teams and establishing design systems",
-      "Conducting user research to inform product decisions"
+      "Building AI-powered solutions for healthcare and education",
+      "Leading product development and go-to-market strategies",
+      "Optimizing operations through data-driven insights"
     ],
     "languages": [
       {
@@ -69,7 +69,7 @@
         "flag": "🇩🇪"
       }
     ],
-    "interests": ["Design Systems", "Accessibility", "Typography", "Motion Design", "Photography"]
+    "interests": ["AI & Machine Learning", "Healthcare Innovation", "Data Analysis", "Product Strategy", "Operations"]
   },
   "navigation": [
     {
@@ -99,40 +99,58 @@
   ],
   "experience": [
     {
-      "title": "Senior Product Designer",
-      "company": "TechCorp Inc.",
-      "period": "2021 - Present",
-      "description": "Lead the design of flagship products, managing a team of 3 designers. Implemented a design system that reduced design inconsistencies by 60% and improved development time by 40%. Conducted user research and usability testing to inform product decisions.",
+      "title": "GTM & Product Lead (Founding Team)",
+      "company": "Ovelia Health",
+      "period": "Aug 2024 - Present",
+      "location": "New York, NY",
+      "url": "https://ovelia.health/",
+      "description": "Leading go-to-market strategy and product development for a health tech startup focused on PCOS care. Driving user research, market validation, and product positioning to build solutions that address unmet needs in women's health.",
       "achievements": [
-        "Redesigned the main dashboard, increasing user engagement by 35%",
-        "Led the design for 3 major feature launches, contributing to a 25% increase in user retention",
-        "Established design processes that improved team collaboration and product quality"
+        "Drove cold outreach to 200+ stakeholders/week to validate unmet needs across the PCOS journey, resulting in a redesigned provider referral model and 3 prioritized MVP features",
+        "Defined 4 user market segments by analyzing qualitative data using manual tagging and AI-powered sentiment analysis; insights shaped 70% of MVP scope",
+        "Spearheaded multi-channel GTM campaigns that drove a 60% MoM increase in waitlist signups and conversion of 30+ users into two closed beta testing cohorts",
+        "Led Ovelia's messaging and positioning by benchmarking 12+ competitors and embedding real user stories into marketing content"
       ],
-      "technologies": ["Figma", "Adobe XD", "Prototyping", "User Research"]
+      "technologies": ["Market Research", "User Interviews", "GTM Strategy", "Product Management", "Data Analysis", "UX Research", "A/B Testing", "Cold Outreach"]
     },
     {
-      "title": "UX Designer",
-      "company": "Design Studio X",
-      "period": "2018 - 2021",
-      "description": "Collaborated with cross-functional teams to design intuitive and engaging user experiences for various client projects. Created wireframes, prototypes, and high-fidelity designs for web and mobile applications.",
+      "title": "Investments Intern, Equity Capital Markets",
+      "company": "The Landmark Group, Family Office",
+      "period": "May 2024 - Aug 2024",
+      "location": "Mumbai, India",
+      "description": "Analyzed financial markets and developed investment strategies for large-cap US equities in automotive and energy sectors. Created comprehensive valuation models and investment theses to inform portfolio decisions.",
       "achievements": [
-        "Designed interfaces for 12+ client projects across fintech, healthcare, and e-commerce",
-        "Improved conversion rates by an average of 22% through data-driven design iterations",
-        "Mentored junior designers and facilitated design thinking workshops"
+        "Analyzed quarterly earnings and financial statements for large-cap US equities in automotive and energy sectors",
+        "Developed DCF and comps-based valuation models to inform buy/sell recommendations aligned with firm's risk appetite",
+        "Synthesized investment theses on two large-cap equities, presenting comprehensive risk matrix and macro-driven insights to senior partners"
       ],
-      "technologies": ["Sketch", "InVision", "User Testing", "Information Architecture"]
+      "technologies": ["Financial Modeling", "DCF Analysis", "Market Research", "Risk Analysis", "Relative Valuation", "Equity Research", "Fundamental Analysis"]
     },
     {
-      "title": "UI/UX Intern",
-      "company": "Creative Solutions",
-      "period": "2017 - 2018",
-      "description": "Assisted the design team in creating visual assets and interface components. Participated in brainstorming sessions and contributed to the design of marketing websites and mobile applications.",
+      "title": "Operations Associate",
+      "company": "The Cooper Union, Makerspace Lab",
+      "period": "Jan 2023 - Jul 2024",
+      "location": "New York, NY",
+      "description": "Managed fabrication lab operations and redesigned workflows to improve efficiency and reduce waste. Built analytics dashboards to track KPIs and drive strategic decision-making.",
       "achievements": [
-        "Redesigned the company website, improving mobile responsiveness",
-        "Created a component library that streamlined the design process",
-        "Conducted competitive analysis for 5 client projects"
+        "Redesigned fabrication workflows across 5 departments, cutting queue time by 79% and material waste by 47%",
+        "Built live Excel dashboard tracking 15+ KPIs; insights drove strategic budget reallocations and staffing plans",
+        "Increased lab engagement by 45% and reduced operational bottlenecks through process optimization"
       ],
-      "technologies": ["Adobe Creative Suite", "HTML/CSS", "Wireframing"]
+      "technologies": ["Operations", "Web Design", "Data Analysis", "3D Printing", "CNC", "Laser Cutting", "CAD", "Project Management"]
+    },
+    {
+      "title": "Operations Analyst Intern, CTO Intern Group",
+      "company": "Innova Solutions Inc.",
+      "period": "Jun 2023 - Aug 2023",
+      "location": "New York, NY",
+      "description": "Developed AI-powered solutions to automate HR processes and improve operational efficiency. Built and trained NLP chatbots to handle employee onboarding and compliance.",
+      "achievements": [
+        "Built HRFlow - an NLP-based chatbot powered by Python (ChatterBot), reducing onboarding time by 45% per employee",
+        "Led chatbot's training on internal SOPs and FAQs to automate compliance at scale",
+        "Cut HR ticket volume by 42% by designing modular, region-specific onboarding workflows across APAC, EU, and LATAM"
+      ],
+      "technologies": ["Python", "NLP", "AI Automation", "Data Analysis", "UX Research"]
     }
   ],
   "credentials": {
@@ -144,7 +162,7 @@
         "logo": "/nng-logo.png"
       },
       {
-        "name": "Professional Product Designer",
+        "name": "Mechanical Engineer & Product Lead",
         "issuer": "Interaction Design Foundation",
         "date": "2021",
         "logo": "/generic-military-logo.png"
@@ -182,16 +200,16 @@
     ]
   },
   "technicalSkills": {
-    "design": ["Figma", "Sketch", "Adobe XD", "Illustrator", "Photoshop", "InVision", "Principle", "Framer"],
-    "development": ["HTML/CSS", "JavaScript", "React", "Tailwind", "SCSS", "Git", "Responsive Design"],
-    "uxMethods": [
-      "User Research",
-      "Usability Testing",
-      "Wireframing",
-      "Prototyping",
-      "Information Architecture",
-      "User Flows"
+    "product": ["Product Management", "GTM Strategy", "Market Research", "User Interviews", "Data Analysis", "Competitive Analysis"],
+    "technical": ["Python", "NLP", "ChatterBot", "Excel", "Financial Modeling", "DCF Analysis", "Process Design"],
+    "operations": [
+      "Operations Management",
+      "Workflow Optimization",
+      "KPI Tracking",
+      "Budget Management",
+      "Staffing Planning",
+      "Process Automation"
     ],
-    "softSkills": ["Team Leadership", "Project Management", "Client Communication", "Mentoring", "Presentations"]
+    "softSkills": ["Leadership", "Strategic Thinking", "Problem Solving", "Cross-functional Collaboration", "Presentations"]
   }
 }

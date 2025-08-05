@@ -19,7 +19,7 @@ export default function Home() {
       {/* Simple Footer */}
       <footer className="py-8 text-center text-sm text-muted-foreground border-t border-border/50">
         <div className="container mx-auto px-4">
-          <p>© {new Date().getFullYear()} jane doe. all rights reserved.</p>
+          <p>© {new Date().getFullYear()} aaryan mahipal. all rights reserved.</p>
         </div>
       </footer>
     </main>

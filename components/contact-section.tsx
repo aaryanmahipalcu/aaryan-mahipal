@@ -27,10 +27,10 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-medium">Email</h4>
                     <a
-                      href="mailto:jane.doe@example.com"
+                      href="mailto:aaryan.mahipal@example.com"
                       className="text-sm text-zinc-400 hover:text-amber-400 transition-colors"
                     >
-                      jane.doe@example.com
+                      aaryan.mahipal@example.com
                     </a>
                   </div>
                 </div>

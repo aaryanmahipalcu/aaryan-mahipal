@@ -49,7 +49,7 @@ export function ChatInterface() {
     {
       id: "1",
       content:
-        "hi! i'm jane's ai assistant. i'm here to give you a personalized tour of her work. what would you like to explore first?",
+        "hi! i'm aaryan's ai assistant. i'm here to give you a personalized tour of his work. what would you like to explore first?",
       role: "assistant",
       timestamp: new Date(),
     },
@@ -146,7 +146,7 @@ export function ChatInterface() {
     setTimeout(() => {
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
-        content: `jane is a designer, developer, and founder who creates digital experiences that connect human needs with technical innovation. want to know more about specific skills or projects?`,
+        content: `aaryan is a mechanical engineer and product lead who works at the intersection of health, education, and product innovation. he has built AI-powered tools, health tech startups, and renewable energy projects. want to know more about specific skills or projects?`,
         role: "assistant",
         timestamp: new Date(),
       }
@@ -170,7 +170,7 @@ export function ChatInterface() {
 
           {/* Window Title */}
           <div className="flex-1 text-center">
-            <h3 className="font-medium text-gray-900 dark:text-gray-100">jane's assistant</h3>
+            <h3 className="font-medium text-gray-900 dark:text-gray-100">aaryan's assistant</h3>
           </div>
         </div>
 
