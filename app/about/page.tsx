@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Breadcrumb } from "@/components/breadcrumb"
 import { AnimatedSection } from "@/components/animated-section"
 import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
@@ -21,13 +22,19 @@ import {
   Award,
   GraduationCap
 } from "lucide-react"
-import { getPersonalInfo, getAboutInfo, getExperienceInfo } from "@/lib/data"
+import { getPersonalInfo, getAboutInfo, getExperienceInfo, getSkillsInfo } from "@/lib/data"
 import Image from "next/image"
 
 export default function AboutPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All Skills")
   const personalInfo = getPersonalInfo()
   const aboutInfo = getAboutInfo()
   const experienceInfo = getExperienceInfo()
+  const skillsInfo = getSkillsInfo()
+
+  const filteredSkills = selectedCategory === "All Skills" 
+    ? skillsInfo.items 
+    : skillsInfo.items.filter(skill => skill.category === selectedCategory)
 
   return (
     <main className="min-h-screen bg-background text-foreground relative overflow-hidden">
@@ -52,9 +59,18 @@ export default function AboutPage() {
           {/* Personal Story Section */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <AnimatedSection animation="slide-right">
-              <div className="space-y-6">
+              <div className="space-y-6 flex flex-col justify-center h-full">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  hi, i'm aaryan. i am a graduate of the cooper union, where i studied mechanical engineering. i grew up in India and moved to the US in pursuit of higher education in 2021. i'm currently based in new york, building and creating to solve real-world problems through technology and human-centered design. you can find me on the following corners of the internet:
+                  hi, i'm aaryan. i am a graduate of{" "}
+                  <a
+                    href="https://cooper.edu/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 transition-colors underline decoration-primary/30 hover:decoration-primary/60"
+                  >
+                    the cooper union
+                  </a>
+                  , where i studied mechanical engineering. i grew up in India and moved to the US in pursuit of higher education in 2021. i'm currently based in new york, building and creating to solve real-world problems through technology and human-centered design. you can find me on the following corners of the internet:
                 </p>
                 
                 <div className="flex flex-wrap gap-4">
@@ -96,45 +112,11 @@ export default function AboutPage() {
                     <span>{personalInfo.location}</span>
                   </div>
                 </div>
-
-                {/* Education Section */}
-                <div className="mt-8 space-y-4">
-                  <div className="flex items-center gap-2">
-                    <GraduationCap className="w-5 h-5 text-primary" />
-                    <h3 className="font-semibold text-lg">Education</h3>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-base">The Cooper Union for the Advancement of Science and Art</h4>
-                    <p className="text-sm text-muted-foreground">Bachelor of Engineering in Mechanical Engineering</p>
-                    <p className="text-xs text-muted-foreground">2021 - 2025</p>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <h5 className="font-medium mb-2">Leadership & Clubs</h5>
-                      <ul className="space-y-1 text-muted-foreground">
-                        <li>• Cooper Consulting Group (Founder)</li>
-                        <li>• Undergraduate Researcher at miliLab</li>
-                        <li>• Cooperloop & Motorsports FSAE</li>
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h5 className="font-medium mb-2">Key Projects</h5>
-                      <ul className="space-y-1 text-muted-foreground">
-                        <li>• Low-Cost Hardware Module for 3-D Pose Estimation</li>
-                        <li>• CUCU: An AI-Powered Mental Health App for Teens</li>
-                        <li>• Residential Energy Retrofits for NYC | U.S. DOE Solar District Cup Finalist</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
               </div>
             </AnimatedSection>
 
             <AnimatedSection animation="slide-left">
-              <div className="relative">
+              <div className="relative h-full flex items-center">
                 <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
                   <Image
                     src={personalInfo.avatar || "/placeholder.svg"}
@@ -160,131 +142,76 @@ export default function AboutPage() {
               </div>
             </AnimatedSection>
           </div>
-
-          {/* What I Do Section */}
-          <AnimatedSection animation="fade-up">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">what i do</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                i focus on creating experiences that matter, using design and technology to solve real problems
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-            {aboutInfo.focus.map((focus, index) => (
-              <AnimatedSection key={index} animation="fade-up" delay={index * 100}>
-                <Card className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 group">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                      {index === 0 && <Palette className="w-6 h-6 text-primary" />}
-                      {index === 1 && <Users className="w-6 h-6 text-primary" />}
-                      {index === 2 && <Code className="w-6 h-6 text-primary" />}
-                    </div>
-                    <p className="text-sm leading-relaxed">{focus}</p>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
-            ))}
-          </div>
-
+          
           {/* My Toolkit Section */}
           <AnimatedSection animation="fade-up">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">my toolkit</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                the tools and frameworks i use to bring ideas to life
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold mb-4">/my toolkit</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl">
+                my toolkit for building exceptional digital experiences
               </p>
             </div>
           </AnimatedSection>
 
-          <div className="space-y-8 mb-20">
-            {/* Product Skills */}
-            <AnimatedSection animation="fade-up">
-              <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8">
-                <h3 className="text-xl font-bold mb-6 text-center">product & strategy</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {["Product Management", "GTM Strategy", "Market Research", "User Interviews", "Data Analysis", "Competitive Analysis"].map((tool, index) => (
-                    <div key={index} className="group">
-                      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:bg-card transition-all duration-300 group-hover:scale-105">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
-                          <Palette className="w-6 h-6 text-primary" />
-                        </div>
-                        <p className="text-xs font-medium text-center leading-tight">{tool}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
+          <div className="mb-20">
+            {/* Category Tabs */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {skillsInfo.categories.map((category, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    selectedCategory === category
+                      ? "bg-primary text-white" 
+                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
 
-            {/* Technical Skills */}
-            <AnimatedSection animation="fade-up" delay={100}>
-              <div className="bg-gradient-to-r from-secondary/5 to-primary/5 rounded-2xl p-8">
-                <h3 className="text-xl font-bold mb-6 text-center">technical & analysis</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {["Python", "NLP", "ChatterBot", "Excel", "Financial Modeling", "DCF Analysis"].map((tool, index) => (
-                    <div key={index} className="group">
-                      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:bg-card transition-all duration-300 group-hover:scale-105">
-                        <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-secondary/20 transition-colors">
-                          <Code className="w-6 h-6 text-secondary" />
+            {/* Skills Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+              {filteredSkills.map((skill, index) => (
+                <div key={index} className="group">
+                  <button className="w-full bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-3 hover:bg-card transition-all duration-300 group-hover:scale-105 text-center relative overflow-hidden">
+                    {/* Front side - Skill name and icon */}
+                    <div className="transition-transform duration-300 group-hover:-translate-y-full">
+                      <div className={`w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2 group-hover:bg-primary/20 transition-colors text-sm font-bold ${skill.color}`}>
+                        {skill.icon}
+                      </div>
+                      <p className="text-xs font-medium leading-tight">{skill.name}</p>
+                    </div>
+                    
+                    {/* Back side - Stats (shown on hover) */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-card/95 backdrop-blur-sm rounded-lg transition-transform duration-300 translate-y-full group-hover:translate-y-0">
+                      <div className="flex gap-4">
+                        <div className="text-center">
+                          <p className="text-sm font-bold text-foreground mb-1">{skill.projects}</p>
+                          <p className="text-xs text-muted-foreground">projects</p>
                         </div>
-                        <p className="text-xs font-medium text-center leading-tight">{tool}</p>
+                        <div className="text-center">
+                          <p className="text-sm font-bold text-foreground mb-1">{skill.years}</p>
+                          <p className="text-xs text-muted-foreground">years</p>
+                        </div>
                       </div>
                     </div>
-                  ))}
+                  </button>
                 </div>
-              </div>
-            </AnimatedSection>
+              ))}
+            </div>
 
-            {/* Operations Skills */}
-            <AnimatedSection animation="fade-up" delay={200}>
-              <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8">
-                <h3 className="text-xl font-bold mb-6 text-center">operations & optimization</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                  {["Operations Management", "Workflow Optimization", "KPI Tracking", "Budget Management", "Staffing Planning", "Process Automation"].map((tool, index) => (
-                    <div key={index} className="group">
-                      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:bg-card transition-all duration-300 group-hover:scale-105">
-                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
-                          <Users className="w-6 h-6 text-primary" />
-                        </div>
-                        <p className="text-xs font-medium text-center leading-tight">{tool}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
+
           </div>
 
-          {/* Languages Section */}
-          <AnimatedSection animation="fade-up">
-            <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 mb-20">
-              <h2 className="text-2xl font-bold mb-6 text-center">languages i speak</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {aboutInfo.languages.map((language, index) => (
-                  <div key={index} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">{language.name}</span>
-                      <span className="text-sm text-muted-foreground">{language.proficiency}</span>
-                    </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-1000"
-                        style={{ width: `${language.level}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimatedSection>
+
 
           {/* Experience Highlights */}
           <AnimatedSection animation="fade-up">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">experience highlights</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold mb-4">/experience highlights</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl">
                 here are some of the key moments in my journey
               </p>
             </div>
@@ -297,15 +224,36 @@ export default function AboutPage() {
                   <CardContent className="p-6">
                     <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                       <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center">
-                          <Award className="w-8 h-8 text-primary" />
+                        <div className="w-20 h-20 flex items-center justify-center overflow-hidden">
+                          {experience.logo ? (
+                            <Image
+                              src={experience.logo}
+                              alt={`${experience.company} logo`}
+                              width={48}
+                              height={48}
+                              className="object-contain"
+                            />
+                          ) : (
+                            <Award className="w-8 h-8 text-primary" />
+                          )}
                         </div>
                       </div>
                       
                       <div className="flex-1">
                         <div className="flex flex-col lg:flex-row lg:items-center gap-2 mb-3">
                           <h3 className="text-xl font-bold">{experience.title}</h3>
-                          <span className="text-primary font-medium">@ {experience.company}</span>
+                          {experience.url ? (
+                            <a
+                              href={experience.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary font-medium hover:text-primary/80 transition-colors underline decoration-primary/30 hover:decoration-primary/60"
+                            >
+                              @ {experience.company}
+                            </a>
+                          ) : (
+                            <span className="text-primary font-medium">@ {experience.company}</span>
+                          )}
                         </div>
                         <p className="text-sm text-muted-foreground mb-4">{experience.period}</p>
                         <p className="text-muted-foreground mb-4 leading-relaxed">{experience.description}</p>
@@ -327,9 +275,9 @@ export default function AboutPage() {
 
           {/* Personal Interests */}
           <AnimatedSection animation="fade-up">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">when i'm not designing</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <div className="mb-12">
+              <h2 className="text-3xl font-bold mb-4">/when i'm not designing</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl">
                 life is about balance—here's what keeps me inspired and energized
               </p>
             </div>
@@ -357,12 +305,12 @@ export default function AboutPage() {
 
           {/* CTA Section */}
           <AnimatedSection animation="fade-up">
-            <div className="text-center bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8">
+            <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8">
               <h2 className="text-2xl font-bold mb-4">ready to work together?</h2>
-              <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+              <p className="text-muted-foreground mb-6 max-w-md">
                 let's create something amazing together. i'm always excited to take on new challenges and collaborate with passionate people.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white"

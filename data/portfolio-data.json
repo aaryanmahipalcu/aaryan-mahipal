@@ -104,6 +104,7 @@
       "period": "Aug 2024 - Present",
       "location": "New York, NY",
       "url": "https://ovelia.health/",
+      "logo": "/ovelia-health-logo.png",
       "description": "Leading go-to-market strategy and product development for a health tech startup focused on PCOS care. Driving user research, market validation, and product positioning to build solutions that address unmet needs in women's health.",
       "achievements": [
         "Drove cold outreach to 200+ stakeholders/week to validate unmet needs across the PCOS journey, resulting in a redesigned provider referral model and 3 prioritized MVP features",
@@ -118,6 +119,8 @@
       "company": "The Landmark Group, Family Office",
       "period": "May 2024 - Aug 2024",
       "location": "Mumbai, India",
+      "url": "https://www.landmarkgroup.com/int/en/home",
+      "logo": "/landmark-group-logo.png",
       "description": "Analyzed financial markets and developed investment strategies for large-cap US equities in automotive and energy sectors. Created comprehensive valuation models and investment theses to inform portfolio decisions.",
       "achievements": [
         "Analyzed quarterly earnings and financial statements for large-cap US equities in automotive and energy sectors",
@@ -131,6 +134,8 @@
       "company": "The Cooper Union, Makerspace Lab",
       "period": "Jan 2023 - Jul 2024",
       "location": "New York, NY",
+      "url": "https://cooper.edu/",
+      "logo": "/cooper-union-logo.png",
       "description": "Managed fabrication lab operations and redesigned workflows to improve efficiency and reduce waste. Built analytics dashboards to track KPIs and drive strategic decision-making.",
       "achievements": [
         "Redesigned fabrication workflows across 5 departments, cutting queue time by 79% and material waste by 47%",
@@ -144,6 +149,8 @@
       "company": "Innova Solutions Inc.",
       "period": "Jun 2023 - Aug 2023",
       "location": "New York, NY",
+      "url": "https://innovasolutions.com/",
+      "logo": "/innova-solutions-logo.png",
       "description": "Developed AI-powered solutions to automate HR processes and improve operational efficiency. Built and trained NLP chatbots to handle employee onboarding and compliance.",
       "achievements": [
         "Built HRFlow - an NLP-based chatbot powered by Python (ChatterBot), reducing onboarding time by 45% per employee",
@@ -211,5 +218,194 @@
       "Process Automation"
     ],
     "softSkills": ["Leadership", "Strategic Thinking", "Problem Solving", "Cross-functional Collaboration", "Presentations"]
+  },
+  "skills": {
+    "categories": ["All Skills", "Core Languages", "Frameworks & UI", "Data & ML", "Cloud & Infrastructure", "Development Tools"],
+    "items": [
+      {
+        "name": "TypeScript",
+        "icon": "TS",
+        "category": "Core Languages",
+        "projects": 12,
+        "years": 3,
+        "color": "text-blue-600"
+      },
+      {
+        "name": "JavaScript",
+        "icon": "JS",
+        "category": "Core Languages",
+        "projects": 25,
+        "years": 4,
+        "color": "text-yellow-500"
+      },
+      {
+        "name": "HTML",
+        "icon": "5",
+        "category": "Core Languages",
+        "projects": 30,
+        "years": 5,
+        "color": "text-orange-500"
+      },
+      {
+        "name": "CSS",
+        "icon": "3",
+        "category": "Core Languages",
+        "projects": 28,
+        "years": 4,
+        "color": "text-blue-500"
+      },
+      {
+        "name": "Python",
+        "icon": "🐍",
+        "category": "Core Languages",
+        "projects": 15,
+        "years": 3,
+        "color": "text-green-600"
+      },
+      {
+        "name": "React",
+        "icon": "⚛️",
+        "category": "Frameworks & UI",
+        "projects": 18,
+        "years": 3,
+        "color": "text-blue-400"
+      },
+      {
+        "name": "Next.js",
+        "icon": "N",
+        "category": "Frameworks & UI",
+        "projects": 8,
+        "years": 2,
+        "color": "text-black"
+      },
+      {
+        "name": "Node.js",
+        "icon": "🟢",
+        "category": "Frameworks & UI",
+        "projects": 12,
+        "years": 3,
+        "color": "text-green-500"
+      },
+      {
+        "name": "Flask",
+        "icon": "🔥",
+        "category": "Frameworks & UI",
+        "projects": 6,
+        "years": 2,
+        "color": "text-red-500"
+      },
+      {
+        "name": "FastAPI",
+        "icon": "⚡",
+        "category": "Frameworks & UI",
+        "projects": 4,
+        "years": 1,
+        "color": "text-green-400"
+      },
+      {
+        "name": "TailwindCSS",
+        "icon": "🎨",
+        "category": "Frameworks & UI",
+        "projects": 20,
+        "years": 3,
+        "color": "text-cyan-500"
+      },
+      {
+        "name": "Bootstrap",
+        "icon": "B",
+        "category": "Frameworks & UI",
+        "projects": 10,
+        "years": 2,
+        "color": "text-purple-600"
+      },
+      {
+        "name": "ShadCN",
+        "icon": "/",
+        "category": "Frameworks & UI",
+        "projects": 5,
+        "years": 1,
+        "color": "text-gray-700"
+      },
+      {
+        "name": "Framer Motion",
+        "icon": "🎬",
+        "category": "Frameworks & UI",
+        "projects": 7,
+        "years": 2,
+        "color": "text-purple-500"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "🍃",
+        "category": "Data & ML",
+        "projects": 8,
+        "years": 2,
+        "color": "text-green-500"
+      },
+      {
+        "name": "PostgreSQL",
+        "icon": "🐘",
+        "category": "Data & ML",
+        "projects": 6,
+        "years": 2,
+        "color": "text-blue-600"
+      },
+      {
+        "name": "SQLite",
+        "icon": "🗄️",
+        "category": "Data & ML",
+        "projects": 12,
+        "years": 3,
+        "color": "text-blue-500"
+      },
+      {
+        "name": "TensorFlow",
+        "icon": "🧠",
+        "category": "Data & ML",
+        "projects": 3,
+        "years": 1,
+        "color": "text-orange-500"
+      },
+      {
+        "name": "AWS",
+        "icon": "☁️",
+        "category": "Cloud & Infrastructure",
+        "projects": 5,
+        "years": 2,
+        "color": "text-orange-600"
+      },
+      {
+        "name": "Docker",
+        "icon": "🐳",
+        "category": "Cloud & Infrastructure",
+        "projects": 4,
+        "years": 1,
+        "color": "text-blue-500"
+      },
+      {
+        "name": "Git",
+        "icon": "📝",
+        "category": "Development Tools",
+        "projects": 35,
+        "years": 5,
+        "color": "text-orange-600"
+      },
+      {
+        "name": "VS Code",
+        "icon": "💻",
+        "category": "Development Tools",
+        "projects": 30,
+        "years": 4,
+        "color": "text-blue-500"
+      },
+      {
+        "name": "Figma",
+        "icon": "🎨",
+        "category": "Development Tools",
+        "projects": 15,
+        "years": 2,
+        "color": "text-purple-500"
+      }
+    ]
   }
 }

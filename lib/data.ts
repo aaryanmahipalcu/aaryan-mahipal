@@ -44,3 +44,8 @@ export function getTechnicalSkillsInfo() {
 export function getMetaInfo() {
   return data.meta
 }
+
+// Helper function to get skills information
+export function getSkillsInfo() {
+  return data.skills
+}
