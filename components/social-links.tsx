@@ -1,4 +1,5 @@
 import * as LucideIcons from "lucide-react"
+import { LucideIcon } from "lucide-react"
 
 interface SocialLink {
   platform: string
@@ -14,7 +15,7 @@ export function SocialLinks({ socialLinks }: SocialLinksProps) {
   return (
     <div className="flex justify-center gap-2 sm:gap-3 my-2 sm:my-3">
       {socialLinks.map((link, index) => {
-        const IconComponent = LucideIcons[link.icon as keyof typeof LucideIcons]
+        const IconComponent = LucideIcons[link.icon as keyof typeof LucideIcons] as LucideIcon | undefined
 
         return (
           <a

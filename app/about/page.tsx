@@ -104,12 +104,12 @@ export default function AboutPage() {
 
             <AnimatedSection animation="slide-left">
               <div className="relative">
-                <div className="relative w-full h-96 rounded-2xl overflow-hidden">
+                <div className="relative w-full h-[500px] rounded-2xl overflow-hidden">
                   <Image
                     src={personalInfo.avatar || "/placeholder.svg"}
                     alt={personalInfo.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>

@@ -2,8 +2,11 @@ import { Card, CardContent } from "@/components/ui/card"
 import { ContactForm } from "@/components/contact-form"
 import { UserIcon, Mail, Phone, MapPin, Clock } from "lucide-react"
 import { SocialLinks } from "@/components/social-links"
+import { getPersonalInfo } from "@/lib/data"
 
 export function ContactSection() {
+  const personalInfo = getPersonalInfo()
+  
   return (
     <Card className="bg-zinc-900/70 border-zinc-800 backdrop-blur-sm col-span-1 md:col-span-3 lg:col-span-4 overflow-hidden">
       <CardContent className="p-0">
@@ -64,7 +67,7 @@ export function ContactSection() {
 
               <div className="pt-4">
                 <h4 className="font-medium mb-3">Connect with me</h4>
-                <SocialLinks />
+                <SocialLinks socialLinks={personalInfo.social} />
               </div>
             </div>
           </div>
