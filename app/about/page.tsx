@@ -18,7 +18,8 @@ import {
   ArrowRight,
   MapPin,
   Calendar,
-  Award
+  Award,
+  GraduationCap
 } from "lucide-react"
 import { getPersonalInfo, getAboutInfo, getExperienceInfo } from "@/lib/data"
 import Image from "next/image"
@@ -53,7 +54,7 @@ export default function AboutPage() {
             <AnimatedSection animation="slide-right">
               <div className="space-y-6">
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  hi, i'm aaryan. i'm a graduate of the cooper union, where i studied mechanical engineering. i grew up in India and moved to the US in pursuit of higher education in 2021. i'm currently based in new york, building and creating to solve real-world problems through technology and human-centered design. you can find me on the following corners of the internet:
+                  hi, i'm aaryan. i am a graduate of the cooper union, where i studied mechanical engineering. i grew up in India and moved to the US in pursuit of higher education in 2021. i'm currently based in new york, building and creating to solve real-world problems through technology and human-centered design. you can find me on the following corners of the internet:
                 </p>
                 
                 <div className="flex flex-wrap gap-4">
@@ -94,9 +95,39 @@ export default function AboutPage() {
                     <MapPin className="w-4 h-4" />
                     <span>{personalInfo.location}</span>
                   </div>
+                </div>
+
+                {/* Education Section */}
+                <div className="mt-8 space-y-4">
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>5+ years experience</span>
+                    <GraduationCap className="w-5 h-5 text-primary" />
+                    <h3 className="font-semibold text-lg">Education</h3>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-base">The Cooper Union for the Advancement of Science and Art</h4>
+                    <p className="text-sm text-muted-foreground">Bachelor of Engineering in Mechanical Engineering</p>
+                    <p className="text-xs text-muted-foreground">2021 - 2025</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <h5 className="font-medium mb-2">Leadership & Clubs</h5>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• Cooper Consulting Group (Founder)</li>
+                        <li>• Undergraduate Researcher at miliLab</li>
+                        <li>• Cooperloop & Motorsports FSAE</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h5 className="font-medium mb-2">Key Projects</h5>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• Low-Cost Hardware Module for 3-D Pose Estimation</li>
+                        <li>• CUCU: An AI-Powered Mental Health App for Teens</li>
+                        <li>• Residential Energy Retrofits for NYC | U.S. DOE Solar District Cup Finalist</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
