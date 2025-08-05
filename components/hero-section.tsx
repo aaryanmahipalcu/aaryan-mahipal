@@ -2,7 +2,7 @@
 
 import { ArrowRight, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { TypingAnimation } from "@/components/typing-animation"
+
 import { AnimatedSection } from "@/components/animated-section"
 import { ChatInterface } from "@/components/chat/chat-interface"
 import { getPersonalInfo } from "@/lib/data"
@@ -42,13 +42,9 @@ export function HeroSection() {
             <AnimatedSection animation="fade-up" delay={400}>
               <div className="text-xl md:text-2xl text-muted-foreground h-12 flex items-center">
                 i'm a{" "}
-                <TypingAnimation
-                  texts={typingTexts}
-                  className="ml-2 text-primary font-semibold"
-                  speed={80}
-                  deleteSpeed={40}
-                  pauseDuration={1500}
-                />
+                <span className="ml-2 text-primary font-semibold">
+                  mechanical engineer
+                </span>
               </div>
             </AnimatedSection>
 

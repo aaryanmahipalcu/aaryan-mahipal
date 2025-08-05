@@ -36,27 +36,15 @@ export default function AboutPage() {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
       <div className="relative z-10">
-        <Breadcrumb currentPage="About" />
-
         <div className="container mx-auto px-4 pt-20 pb-12">
           {/* Hero Section */}
           <AnimatedSection animation="fade-up">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-sm font-medium text-primary mb-6">
-                <Sparkles className="w-4 h-4" />
-                get to know me better
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                about{" "}
+            <div className="mb-16">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                  me
+                  /about
                 </span>
               </h1>
-              
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                i'm not just a designer and developer—i'm a storyteller, problem solver, and creative explorer who believes in the power of thoughtful design to make a difference.
-              </p>
             </div>
           </AnimatedSection>
 
@@ -64,9 +52,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             <AnimatedSection animation="slide-right">
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold">my story</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  {aboutInfo.bio}
+                  Aaryan Mahipal is a mechanical engineer working at the intersection of health, education, and product innovation. He has built AI-powered tools, health tech startups, and renewable energy projects. His vision is to solve real-world problems through technology and create inclusive solutions. Based in New York, he believes in constant experimentation and lifelong learning.
                 </p>
                 
                 <div className="flex flex-wrap gap-3">
@@ -143,6 +130,75 @@ export default function AboutPage() {
                 </Card>
               </AnimatedSection>
             ))}
+          </div>
+
+          {/* My Toolkit Section */}
+          <AnimatedSection animation="fade-up">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">my toolkit</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                the tools and frameworks i use to bring ideas to life
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="space-y-8 mb-20">
+            {/* Design Tools */}
+            <AnimatedSection animation="fade-up">
+              <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8">
+                <h3 className="text-xl font-bold mb-6 text-center">design & prototyping</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                  {["Figma", "Sketch", "Adobe XD", "Illustrator", "Photoshop", "InVision", "Principle", "Framer"].map((tool, index) => (
+                    <div key={index} className="group">
+                      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:bg-card transition-all duration-300 group-hover:scale-105">
+                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
+                          <Palette className="w-6 h-6 text-primary" />
+                        </div>
+                        <p className="text-xs font-medium text-center">{tool}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* Development Tools */}
+            <AnimatedSection animation="fade-up" delay={100}>
+              <div className="bg-gradient-to-r from-secondary/5 to-primary/5 rounded-2xl p-8">
+                <h3 className="text-xl font-bold mb-6 text-center">development & code</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                  {["HTML/CSS", "JavaScript", "React", "Tailwind", "SCSS", "Git", "Responsive Design"].map((tool, index) => (
+                    <div key={index} className="group">
+                      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:bg-card transition-all duration-300 group-hover:scale-105">
+                        <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-secondary/20 transition-colors">
+                          <Code className="w-6 h-6 text-secondary" />
+                        </div>
+                        <p className="text-xs font-medium text-center">{tool}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* UX Methods */}
+            <AnimatedSection animation="fade-up" delay={200}>
+              <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8">
+                <h3 className="text-xl font-bold mb-6 text-center">ux methods & research</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                  {["User Research", "Usability Testing", "Wireframing", "Prototyping", "Information Architecture", "User Flows"].map((tool, index) => (
+                    <div key={index} className="group">
+                      <div className="bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 hover:bg-card transition-all duration-300 group-hover:scale-105">
+                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
+                          <Users className="w-6 h-6 text-primary" />
+                        </div>
+                        <p className="text-xs font-medium text-center leading-tight">{tool}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
 
           {/* Languages Section */}
