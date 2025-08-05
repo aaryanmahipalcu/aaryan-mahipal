@@ -1,0 +1,51 @@
+# Cursor Rules for Aaryan Mahipal's Portfolio Project
+
+## Project Overview
+This is a Next.js 14 portfolio website built with TypeScript, Tailwind CSS, and shadcn/ui components. The project showcases Aaryan's work as a designer, developer, and founder.
+
+## Coding Preferences
+- Use TypeScript for all new files
+- Prefer functional components with hooks
+- Use Tailwind CSS for styling
+- Follow shadcn/ui component patterns
+- Use modern React patterns (hooks, context, etc.)
+- Prefer async/await over .then() chains
+- Use proper TypeScript types and interfaces
+
+## Project Structure
+- `/app` - Next.js app router pages
+- `/components` - Reusable React components
+- `/lib` - Utility functions and data
+- `/public` - Static assets
+- `/styles` - Global styles
+
+## Key Technologies
+- Next.js 14 with App Router
+- TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- Lucide React icons
+- Framer Motion (for animations)
+
+## Code Style
+- Use camelCase for variables and functions
+- Use PascalCase for components
+- Use kebab-case for file names
+- Prefer const over let when possible
+- Use meaningful variable names
+- Add JSDoc comments for complex functions
+
+## Common Patterns
+- Use the "use client" directive for client components
+- Implement proper error boundaries
+- Use loading states for async operations
+- Follow accessibility best practices
+- Implement responsive design patterns
+
+## Development Workflow
+- Create feature branches for all new development work
+- Work and test features on individual branches before merging
+- Use GitHub Issues to track features and bugs
+- Follow proper Git workflow: branch → develop → test → merge
+- Create descriptive branch names (e.g., `feature/chat-interface`, `bugfix/navigation-issue`)
+- Write clear commit messages that reference related GitHub issues 
