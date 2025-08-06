@@ -362,7 +362,7 @@
       {
         "name": "TensorFlow",
         "icon": "🧠",
-        "category": "Data & ML",
+        "category": "Data, ML & AI",
         "projects": 3,
         "years": 2,
         "color": "text-orange-500"
@@ -370,7 +370,7 @@
       {
         "name": "VBA Excel",
         "icon": "📊",
-        "category": "Data & ML",
+        "category": "Data, ML & AI",
         "projects": 6,
         "years": 2,
         "color": "text-green-600"
@@ -378,7 +378,7 @@
       {
         "name": "Cursor",
         "icon": "⌨️",
-        "category": "Data & ML",
+        "category": "Data, ML & AI",
         "projects": 4,
         "years": 1,
         "color": "text-blue-500"
@@ -386,7 +386,7 @@
       {
         "name": "Claude",
         "icon": "🤖",
-        "category": "Data & ML",
+        "category": "Data, ML & AI",
         "projects": 6,
         "years": 1,
         "color": "text-orange-400"
@@ -394,7 +394,7 @@
       {
         "name": "v0",
         "icon": "🚀",
-        "category": "Data & ML",
+        "category": "Data, ML & AI",
         "projects": 4,
         "years": 1,
         "color": "text-purple-500"

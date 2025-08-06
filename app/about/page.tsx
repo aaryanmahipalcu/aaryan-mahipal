@@ -27,14 +27,28 @@ import Image from "next/image"
 
 export default function AboutPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Skills")
+  const [showAllSkills, setShowAllSkills] = useState(false)
   const personalInfo = getPersonalInfo()
   const aboutInfo = getAboutInfo()
   const experienceInfo = getExperienceInfo()
   const skillsInfo = getSkillsInfo()
 
+  // Calculate category counts
+  const categoryCounts = skillsInfo.categories.reduce((acc, category) => {
+    const count = category === "All Skills" 
+      ? skillsInfo.items.length 
+      : skillsInfo.items.filter(skill => skill.category === category).length
+    acc[category] = count
+    return acc
+  }, {} as Record<string, number>)
+
   const filteredSkills = selectedCategory === "All Skills" 
     ? skillsInfo.items 
     : skillsInfo.items.filter(skill => skill.category === selectedCategory)
+
+  // Limit to 3 rows (18 items in a 6-column grid)
+  const displayedSkills = showAllSkills ? filteredSkills : filteredSkills.slice(0, 18)
+  const hasMoreSkills = filteredSkills.length > 18
 
   return (
     <main className="min-h-screen bg-background text-foreground relative overflow-hidden">
@@ -127,18 +141,7 @@ export default function AboutPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
                 
-                {/* Floating Stats */}
-                <div className="absolute -bottom-6 -right-6 bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl p-4 shadow-lg">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Award className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Projects Completed</p>
-                      <p className="text-xl font-bold">50+</p>
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </AnimatedSection>
           </div>
@@ -159,21 +162,24 @@ export default function AboutPage() {
               {skillsInfo.categories.map((category, index) => (
                 <button
                   key={index}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => {
+                    setSelectedCategory(category)
+                    setShowAllSkills(false) // Reset view more when changing category
+                  }}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     selectedCategory === category
                       ? "bg-primary text-white" 
                       : "bg-muted text-muted-foreground hover:bg-muted/80"
                   }`}
                 >
-                  {category}
+                  {category} ({categoryCounts[category]})
                 </button>
               ))}
             </div>
 
             {/* Skills Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-              {filteredSkills.map((skill, index) => (
+              {displayedSkills.map((skill, index) => (
                 <div key={index} className="group">
                   <button className="w-full bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg p-3 hover:bg-card transition-all duration-300 group-hover:scale-105 text-center relative overflow-hidden">
                     {/* Front side - Skill name and icon */}
@@ -201,6 +207,29 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
+
+            {/* View More/Less Button */}
+            {hasMoreSkills && (
+              <div className="flex justify-center mt-8">
+                <Button
+                  onClick={() => setShowAllSkills(!showAllSkills)}
+                  variant="outline"
+                  className="bg-card/80 backdrop-blur-sm border-border/50 hover:bg-card transition-all duration-300"
+                >
+                  {showAllSkills ? (
+                    <>
+                      Show Less
+                      <ArrowRight className="w-4 h-4 ml-2 rotate-180" />
+                    </>
+                  ) : (
+                    <>
+                      View More ({filteredSkills.length - 18} more)
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
 
 
           </div>
