@@ -220,191 +220,321 @@
     "softSkills": ["Leadership", "Strategic Thinking", "Problem Solving", "Cross-functional Collaboration", "Presentations"]
   },
   "skills": {
-    "categories": ["All Skills", "Core Languages", "Frameworks & UI", "Data & ML", "Cloud & Infrastructure", "Development Tools"],
+    "categories": ["All Skills", "Core Languages", "Frameworks & Libraries", "Data, ML & AI", "Design & Engineering", "Tooling & Ops"],
     "items": [
       {
         "name": "TypeScript",
         "icon": "TS",
         "category": "Core Languages",
-        "projects": 12,
-        "years": 3,
+        "projects": 2,
+        "years": 1,
         "color": "text-blue-600"
       },
       {
         "name": "JavaScript",
         "icon": "JS",
         "category": "Core Languages",
-        "projects": 25,
-        "years": 4,
+        "projects": 2,
+        "years": 1,
         "color": "text-yellow-500"
       },
       {
         "name": "HTML",
         "icon": "5",
         "category": "Core Languages",
-        "projects": 30,
-        "years": 5,
+        "projects": 10,
+        "years": 6,
         "color": "text-orange-500"
       },
       {
         "name": "CSS",
         "icon": "3",
         "category": "Core Languages",
-        "projects": 28,
-        "years": 4,
+        "projects": 10,
+        "years": 6,
         "color": "text-blue-500"
       },
       {
         "name": "Python",
         "icon": "🐍",
         "category": "Core Languages",
-        "projects": 15,
-        "years": 3,
+        "projects": 18,
+        "years": 5,
         "color": "text-green-600"
+      },
+      {
+        "name": "C++",
+        "icon": "⚡",
+        "category": "Core Languages",
+        "projects": 3,
+        "years": 3,
+        "color": "text-blue-700"
+      },
+      {
+        "name": "C#",
+        "icon": "C#",
+        "category": "Core Languages",
+        "projects": 7,
+        "years": 4,
+        "color": "text-purple-600"
       },
       {
         "name": "React",
         "icon": "⚛️",
-        "category": "Frameworks & UI",
-        "projects": 18,
-        "years": 3,
+        "category": "Frameworks & Libraries",
+        "projects": 2,
+        "years": 1,
         "color": "text-blue-400"
       },
       {
         "name": "Next.js",
         "icon": "N",
-        "category": "Frameworks & UI",
-        "projects": 8,
-        "years": 2,
-        "color": "text-black"
-      },
-      {
-        "name": "Node.js",
-        "icon": "🟢",
-        "category": "Frameworks & UI",
-        "projects": 12,
-        "years": 3,
-        "color": "text-green-500"
-      },
-      {
-        "name": "Flask",
-        "icon": "🔥",
-        "category": "Frameworks & UI",
-        "projects": 6,
-        "years": 2,
-        "color": "text-red-500"
-      },
-      {
-        "name": "FastAPI",
-        "icon": "⚡",
-        "category": "Frameworks & UI",
-        "projects": 4,
+        "category": "Frameworks & Libraries",
+        "projects": 2,
         "years": 1,
-        "color": "text-green-400"
+        "color": "text-black"
       },
       {
         "name": "TailwindCSS",
         "icon": "🎨",
-        "category": "Frameworks & UI",
-        "projects": 20,
-        "years": 3,
+        "category": "Frameworks & Libraries",
+        "projects": 2,
+        "years": 1,
         "color": "text-cyan-500"
       },
       {
-        "name": "Bootstrap",
-        "icon": "B",
-        "category": "Frameworks & UI",
-        "projects": 10,
-        "years": 2,
-        "color": "text-purple-600"
-      },
-      {
-        "name": "ShadCN",
-        "icon": "/",
-        "category": "Frameworks & UI",
-        "projects": 5,
-        "years": 1,
-        "color": "text-gray-700"
-      },
-      {
-        "name": "Framer Motion",
-        "icon": "🎬",
-        "category": "Frameworks & UI",
-        "projects": 7,
-        "years": 2,
-        "color": "text-purple-500"
-      },
-      {
-        "name": "MongoDB",
-        "icon": "🍃",
-        "category": "Data & ML",
-        "projects": 8,
-        "years": 2,
-        "color": "text-green-500"
-      },
-      {
-        "name": "PostgreSQL",
-        "icon": "🐘",
-        "category": "Data & ML",
-        "projects": 6,
-        "years": 2,
+        "name": "NumPy",
+        "icon": "🔢",
+        "category": "Frameworks & Libraries",
+        "projects": 20,
+        "years": 6,
         "color": "text-blue-600"
       },
       {
-        "name": "SQLite",
-        "icon": "🗄️",
-        "category": "Data & ML",
-        "projects": 12,
-        "years": 3,
+        "name": "Pandas",
+        "icon": "🐼",
+        "category": "Frameworks & Libraries",
+        "projects": 18,
+        "years": 4,
         "color": "text-blue-500"
       },
+      {
+        "name": "Matplotlib",
+        "icon": "📊",
+        "category": "Frameworks & Libraries",
+        "projects": 20,
+        "years": 4,
+        "color": "text-orange-500"
+      },
+      {
+        "name": "Plotly",
+        "icon": "📈",
+        "category": "Frameworks & Libraries",
+        "projects": 4,
+        "years": 1,
+        "color": "text-purple-500"
+      },
+      {
+        "name": "GeoPandas",
+        "icon": "🗺️",
+        "category": "Frameworks & Libraries",
+        "projects": 2,
+        "years": 3,
+        "color": "text-green-600"
+      },
+      {
+        "name": "Scikit-learn",
+        "icon": "🤖",
+        "category": "Frameworks & Libraries",
+        "projects": 4,
+        "years": 2,
+        "color": "text-orange-600"
+      },
+      {
+        "name": "NLTK",
+        "icon": "📝",
+        "category": "Frameworks & Libraries",
+        "projects": 2,
+        "years": 2,
+        "color": "text-green-500"
+      },
+
       {
         "name": "TensorFlow",
         "icon": "🧠",
         "category": "Data & ML",
         "projects": 3,
-        "years": 1,
+        "years": 2,
         "color": "text-orange-500"
       },
       {
-        "name": "AWS",
-        "icon": "☁️",
-        "category": "Cloud & Infrastructure",
-        "projects": 5,
+        "name": "VBA Excel",
+        "icon": "📊",
+        "category": "Data & ML",
+        "projects": 6,
         "years": 2,
-        "color": "text-orange-600"
+        "color": "text-green-600"
       },
       {
-        "name": "Docker",
-        "icon": "🐳",
-        "category": "Cloud & Infrastructure",
+        "name": "Cursor",
+        "icon": "⌨️",
+        "category": "Data & ML",
         "projects": 4,
         "years": 1,
         "color": "text-blue-500"
       },
       {
+        "name": "Claude",
+        "icon": "🤖",
+        "category": "Data & ML",
+        "projects": 6,
+        "years": 1,
+        "color": "text-orange-400"
+      },
+      {
+        "name": "v0",
+        "icon": "🚀",
+        "category": "Data & ML",
+        "projects": 4,
+        "years": 1,
+        "color": "text-purple-500"
+      },
+
+      {
         "name": "Git",
         "icon": "📝",
-        "category": "Development Tools",
-        "projects": 35,
-        "years": 5,
+        "category": "Tooling & Ops",
+        "projects": 20,
+        "years": 6,
         "color": "text-orange-600"
       },
       {
         "name": "VS Code",
         "icon": "💻",
-        "category": "Development Tools",
+        "category": "Tooling & Ops",
         "projects": 30,
-        "years": 4,
+        "years": 6,
         "color": "text-blue-500"
       },
       {
         "name": "Figma",
         "icon": "🎨",
-        "category": "Development Tools",
-        "projects": 15,
-        "years": 2,
+        "category": "Design & Engineering",
+        "projects": 5,
+        "years": 3,
         "color": "text-purple-500"
+      },
+      {
+        "name": "AutoCAD",
+        "icon": "📐",
+        "category": "Design & Engineering",
+        "projects": 6,
+        "years": 4,
+        "color": "text-red-600"
+      },
+      {
+        "name": "OnShape",
+        "icon": "🔧",
+        "category": "Design & Engineering",
+        "projects": 8,
+        "years": 4,
+        "color": "text-blue-600"
+      },
+      {
+        "name": "Blender",
+        "icon": "🎭",
+        "category": "Design & Engineering",
+        "projects": 3,
+        "years": 2,
+        "color": "text-orange-500"
+      },
+      {
+        "name": "3D Printing",
+        "icon": "🖨️",
+        "category": "Design & Engineering",
+        "projects": 16,
+        "years": 4,
+        "color": "text-purple-500"
+      },
+      {
+        "name": "Laser Cutting",
+        "icon": "⚡",
+        "category": "Design & Engineering",
+        "projects": 11,
+        "years": 3,
+        "color": "text-red-500"
+      },
+      {
+        "name": "CNC",
+        "icon": "⚙️",
+        "category": "Design & Engineering",
+        "projects": 2,
+        "years": 1,
+        "color": "text-gray-600"
+      },
+      {
+        "name": "Helioscope",
+        "icon": "☀️",
+        "category": "Design & Engineering",
+        "projects": 2,
+        "years": 1,
+        "color": "text-yellow-500"
+      },
+      {
+        "name": "ANSYS Granta MI",
+        "icon": "🔬",
+        "category": "Design & Engineering",
+        "projects": 1,
+        "years": 1,
+        "color": "text-blue-700"
+      },
+      {
+        "name": "Notion",
+        "icon": "📝",
+        "category": "Tooling & Ops",
+        "projects": 20,
+        "years": 3,
+        "color": "text-black"
+      },
+      {
+        "name": "Slack",
+        "icon": "💬",
+        "category": "Tooling & Ops",
+        "projects": 15,
+        "years": 3,
+        "color": "text-purple-500"
+      },
+      {
+        "name": "Jira",
+        "icon": "📋",
+        "category": "Tooling & Ops",
+        "projects": 12,
+        "years": 2,
+        "color": "text-blue-600"
+      },
+      {
+        "name": "GitHub",
+        "icon": "🐙",
+        "category": "Tooling & Ops",
+        "projects": 30,
+        "years": 6,
+        "color": "text-gray-800"
+      },
+      {
+        "name": "Vercel",
+        "icon": "▲",
+        "category": "Tooling & Ops",
+        "projects": 3,
+        "years": 1,
+        "color": "text-black"
+      },
+      {
+        "name": "Canva",
+        "icon": "🎨",
+        "category": "Tooling & Ops",
+        "projects": 20,
+        "years": 2,
+        "color": "text-blue-500"
       }
     ]
   }
