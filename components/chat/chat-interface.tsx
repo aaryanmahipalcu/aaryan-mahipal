@@ -30,10 +30,7 @@ const COMMANDS = {
     route: "/work",
     description: "view my portfolio projects",
   },
-  "/play": {
-    route: "/play",
-    description: "explore my creative experiments",
-  },
+
   "/writing": {
     route: "/writing",
     description: "read my thoughts and articles",
