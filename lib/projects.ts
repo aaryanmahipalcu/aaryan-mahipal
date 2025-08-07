@@ -19,11 +19,14 @@ export interface Project {
   description: string[]
   features: string[]
   technologies: string[]
+  tools: string[]
+  tags: string[]
   coverImage: string
   thumbnailImage: string
-  gallery?: ProjectGalleryImage[]
+  images: ProjectGalleryImage[]
   client?: string
   timeline: string
+  duration: string
   role: string
   liveUrl?: string
   githubUrl?: string
@@ -51,15 +54,18 @@ const projects: Project[] = [
       "Detailed analytics for job seekers to track their application progress",
     ],
     technologies: ["React Native", "TypeScript", "Node.js", "Express", "MongoDB", "AWS", "Firebase"],
+    tools: ["Figma", "Postman", "Jira", "GitHub", "Vercel"],
+    tags: ["Mobile Development", "Job Search", "AI/ML", "Real-time", "User Experience"],
     coverImage: "/job-finder-cover.png",
-    thumbnailImage: "/modern-finance-app.png",
-    gallery: [
+    thumbnailImage: "/job-finder-screen1.png",
+    images: [
       { url: "/job-finder-screen1.png", caption: "Home Screen with Job Recommendations" },
       { url: "/job-finder-screen2.png", caption: "Job Detail View" },
       { url: "/job-finder-screen3.png", caption: "User Profile and Skills" },
       { url: "/job-finder-screen4.png", caption: "Application Tracking Dashboard" },
     ],
-    timeline: "3 months (Q2 2023)",
+    timeline: "Q2 2023",
+    duration: "3 months",
     role: "Lead Product Manager",
     liveUrl: "https://example.com/job-finder",
     githubUrl: "https://github.com/example/job-finder",
@@ -99,17 +105,20 @@ const projects: Project[] = [
       "Customizable reports and data exports",
       "Financial insights and recommendations",
     ],
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Chart.js", "Plaid API", "PostgreSQL", "Vercel"],
+    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "D3.js", "Stripe API"],
+    tools: ["Figma", "Postman", "Jira", "GitHub", "Vercel", "Chart.js"],
+    tags: ["Financial Tech", "Data Visualization", "Dashboard", "Analytics", "Security"],
     coverImage: "/finance-dashboard-cover.png",
-    thumbnailImage: "/modern-finance-overview.png",
-    gallery: [
+    thumbnailImage: "/finance-dashboard-screen1.png",
+    images: [
       { url: "/finance-dashboard-screen1.png", caption: "Main Dashboard Overview" },
-      { url: "/finance-dashboard-screen2.png", caption: "Expense Analysis" },
-      { url: "/finance-dashboard-screen3.png", caption: "Investment Portfolio" },
-      { url: "/finance-dashboard-screen4.png", caption: "Financial Goals Tracker" },
+      { url: "/finance-dashboard-screen2.png", caption: "Investment Portfolio Analysis" },
+      { url: "/finance-dashboard-screen3.png", caption: "Expense Tracking Interface" },
+      { url: "/finance-dashboard-screen4.png", caption: "Financial Goals Dashboard" },
     ],
-    timeline: "4 months (Q3-Q4 2022)",
-    role: "Product Manager & Data Analyst",
+    timeline: "Q1 2023",
+    duration: "4 months",
+    role: "Full Stack Developer",
     liveUrl: "https://example.com/finance-dashboard",
     githubUrl: "https://github.com/example/finance-dashboard",
     relatedProjects: [
@@ -117,7 +126,7 @@ const projects: Project[] = [
         slug: "job-finder-app",
         title: "Job Finder App",
         category: "Mobile App",
-        image: "/modern-finance-app.png",
+        image: "/job-finder-screen1.png",
       },
       {
         slug: "ecommerce-redesign",
@@ -132,41 +141,42 @@ const projects: Project[] = [
     slug: "ecommerce-redesign",
     title: "E-Commerce Redesign",
     category: "UX Case Study",
-    shortDescription:
-      "A complete redesign of an e-commerce platform focused on improving user experience and conversion rates.",
+    shortDescription: "A complete redesign of an e-commerce platform focusing on user experience and conversion optimization.",
     description: [
-      "This project involved a comprehensive redesign of an established e-commerce platform that was struggling with user engagement and conversion rates. The goal was to create a more intuitive, visually appealing shopping experience that would drive sales and customer satisfaction.",
-      "The redesign process began with extensive user research, including interviews, surveys, and usability testing of the existing platform. This research revealed key pain points in the customer journey, such as a complicated checkout process and difficulty finding products.",
-      "Based on these insights, I developed a new information architecture and user flow that simplified navigation and streamlined the purchase process. The visual design was updated with a clean, modern aesthetic that highlighted product imagery and created a consistent brand experience across all touchpoints.",
+      "This project involved a comprehensive redesign of an existing e-commerce platform to improve user experience, increase conversion rates, and modernize the overall design aesthetic.",
+      "The redesign process included extensive user research, competitor analysis, and iterative design testing to ensure the new interface met user needs and business objectives.",
+      "Key improvements included streamlined checkout processes, enhanced product discovery, and mobile-first responsive design that significantly improved user engagement metrics.",
     ],
     features: [
-      "Simplified product navigation and filtering system",
-      "Redesigned product detail pages with enhanced imagery and information",
-      "Streamlined checkout process reducing steps by 40%",
-      "Personalized product recommendations based on browsing history",
+      "Streamlined checkout process with reduced steps",
+      "Advanced product filtering and search functionality",
+      "Personalized product recommendations",
       "Mobile-first responsive design",
-      "Improved search functionality with predictive suggestions",
-      "Enhanced wishlist and saved items functionality",
+      "Enhanced product detail pages with 360° views",
+      "Integrated customer reviews and ratings system",
+      "Real-time inventory tracking and notifications",
     ],
-    technologies: ["Figma", "Adobe XD", "HTML/CSS", "JavaScript", "Shopify", "Hotjar", "Google Analytics"],
+    technologies: ["Figma", "Adobe XD", "Sketch", "InVision", "Hotjar", "Google Analytics"],
+    tools: ["Figma", "Adobe Creative Suite", "Miro", "UserTesting", "Hotjar"],
+    tags: ["UX Design", "E-commerce", "User Research", "Conversion Optimization", "Mobile Design"],
     coverImage: "/ecommerce-redesign-cover.png",
-    thumbnailImage: "/modern-apparel-storefront.png",
-    gallery: [
-      { url: "/ecommerce-redesign-screen1.png", caption: "Homepage Design" },
-      { url: "/ecommerce-redesign-screen2.png", caption: "Product Category Page" },
-      { url: "/ecommerce-redesign-screen3.png", caption: "Product Detail Page" },
+    thumbnailImage: "/ecommerce-redesign-screen1.png",
+    images: [
+      { url: "/ecommerce-redesign-screen1.png", caption: "Homepage Redesign" },
+      { url: "/ecommerce-redesign-screen2.png", caption: "Product Listing Page" },
+      { url: "/ecommerce-redesign-screen3.png", caption: "Product Detail View" },
       { url: "/ecommerce-redesign-screen4.png", caption: "Checkout Process" },
     ],
-    client: "Fashion Retailer Inc.",
-    timeline: "6 months (Q1-Q2 2022)",
-    role: "Product Strategy Lead",
-    liveUrl: "https://example.com/fashion-retailer",
+    timeline: "Q4 2022",
+    duration: "2 months",
+    role: "UX Designer",
+    liveUrl: "https://example.com/ecommerce-redesign",
     relatedProjects: [
       {
         slug: "job-finder-app",
         title: "Job Finder App",
         category: "Mobile App",
-        image: "/modern-finance-app.png",
+        image: "/job-finder-screen1.png",
       },
       {
         slug: "finance-dashboard",
@@ -178,10 +188,6 @@ const projects: Project[] = [
   },
 ]
 
-export { projects }
-
-// Add these functions after the projects array export
-
 export function getAllProjects(): Project[] {
   return projects
 }
@@ -191,19 +197,26 @@ export function getProjectBySlug(slug: string): Project | undefined {
 }
 
 export function getRelatedProjects(currentSlug: string, limit = 2): RelatedProject[] {
-  const currentProject = getProjectBySlug(currentSlug)
-  if (!currentProject || !currentProject.relatedProjects) {
-    // If no related projects defined, return random projects
-    return projects
-      .filter((project) => project.slug !== currentSlug)
-      .slice(0, limit)
-      .map((project) => ({
-        slug: project.slug,
-        title: project.title,
-        category: project.category,
-        image: project.thumbnailImage,
-      }))
-  }
+  const currentProject = projects.find((project) => project.slug === currentSlug)
+  if (!currentProject?.relatedProjects) return []
 
   return currentProject.relatedProjects.slice(0, limit)
+}
+
+export function getProjectsByCategory(category: string): Project[] {
+  return projects.filter((project) => project.category === category)
+}
+
+export function getProjectsByTag(tag: string): Project[] {
+  return projects.filter((project) => project.tags.includes(tag))
+}
+
+export function getAllTags(): string[] {
+  const allTags = projects.flatMap((project) => project.tags)
+  return [...new Set(allTags)].sort()
+}
+
+export function getAllCategories(): string[] {
+  const allCategories = projects.map((project) => project.category)
+  return [...new Set(allCategories)].sort()
 }
