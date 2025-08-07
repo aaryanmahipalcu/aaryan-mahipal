@@ -77,7 +77,7 @@ export function HeroSection() {
               <div className="text-sm text-muted-foreground">
                 <p className="mb-2">try these commands:</p>
                 <div className="flex flex-wrap gap-2">
-                  {["/about", "/work", "/play", "/writing", "/contact"].map((command) => (
+                  {["/about", "/work", "/writing", "/contact"].map((command) => (
                     <code
                       key={command}
                       className="px-2 py-1 bg-muted rounded text-xs font-mono"
