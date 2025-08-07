@@ -4,6 +4,7 @@ export interface SubstackPost {
   id: string
   title: string
   excerpt: string
+  preview: string
   content: string
   author: string
   publishedDate: string
@@ -49,39 +50,46 @@ function parseSubstackRSS(xmlText: string): SubstackPost[] {
     while ((match = pattern.exec(xmlText)) !== null) {
       const itemXml = match[1]
       
-      // Try different tag names for title
+      // Try different tag names for title with better debugging
       const title = extractTag(itemXml, 'title') || 
                    extractTag(itemXml, 'name') || 
-                   extractTag(itemXml, 'dc:title')
+                   extractTag(itemXml, 'dc:title') ||
+                   extractTag(itemXml, 'atom:title')
       
       const description = extractTag(itemXml, 'description') || 
                          extractTag(itemXml, 'summary') || 
-                         extractTag(itemXml, 'content')
+                         extractTag(itemXml, 'content') ||
+                         extractTag(itemXml, 'atom:summary')
       
       const link = extractTag(itemXml, 'link') || 
                   extractTag(itemXml, 'url') || 
-                  extractTag(itemXml, 'id')
+                  extractTag(itemXml, 'id') ||
+                  extractTag(itemXml, 'atom:link')
       
       const pubDate = extractTag(itemXml, 'pubDate') || 
                      extractTag(itemXml, 'published') || 
-                     extractTag(itemXml, 'dc:date')
+                     extractTag(itemXml, 'dc:date') ||
+                     extractTag(itemXml, 'atom:published')
       
       const content = extractTag(itemXml, 'content:encoded') || 
                      extractTag(itemXml, 'content') || 
+                     extractTag(itemXml, 'atom:content') ||
                      description
       
       if (title && link) {
         // Clean and process the title
         const cleanTitle = cleanHtml(title).trim()
         
-        // Create a better excerpt from description or content
-        const excerpt = cleanHtml(description || content).substring(0, 250).trim()
-        const finalExcerpt = excerpt.length > 200 ? excerpt.substring(0, excerpt.lastIndexOf(' ')) + '...' : excerpt
+        // Create a better excerpt from content for preview
+        const cleanContent = cleanHtml(content)
+        const excerpt = cleanContent.substring(0, 200).trim()
+        const finalExcerpt = excerpt.length > 150 ? excerpt.substring(0, excerpt.lastIndexOf(' ')) + '...' : excerpt
         
         posts.push({
           id: generateId(link),
           title: cleanTitle,
-          excerpt: finalExcerpt,
+          excerpt: cleanHtml(description), // Use description as subtitle
+          preview: finalExcerpt, // Use content preview
           content: cleanHtml(content),
           author: 'Aaryan Mahipal',
           publishedDate: parseDate(pubDate),
@@ -105,16 +113,27 @@ function parseSubstackRSS(xmlText: string): SubstackPost[] {
 }
 
 function extractTag(xml: string, tagName: string): string {
-  // Handle both self-closing and regular tags
-  const regex = new RegExp(`<${tagName}[^>]*>([\\s\\S]*?)<\\/${tagName}>|<${tagName}[^>]*\\/>`)
-  const match = xml.match(regex)
-  if (match) {
-    // If it's a self-closing tag, return empty string
-    if (match[0].includes('/>')) {
-      return ''
+  // Handle CDATA sections and regular content
+  const patterns = [
+    // CDATA pattern: <tag><![CDATA[content]]></tag>
+    new RegExp(`<${tagName}[^>]*>\\s*<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>\\s*<\\/${tagName}>`),
+    // Regular pattern: <tag>content</tag>
+    new RegExp(`<${tagName}[^>]*>([\\s\\S]*?)<\\/${tagName}>`),
+    // Self-closing pattern: <tag/>
+    new RegExp(`<${tagName}[^>]*\\/>`)
+  ]
+  
+  for (const pattern of patterns) {
+    const match = xml.match(pattern)
+    if (match) {
+      // If it's a self-closing tag, return empty string
+      if (match[0].includes('/>')) {
+        return ''
+      }
+      return match[1]?.trim() || ''
     }
-    return match[1].trim()
   }
+  
   return ''
 }
 
@@ -137,43 +156,9 @@ function calculateReadTime(content: string): string {
 }
 
 function extractTags(content: string): string[] {
-  // Extract common tags from content
-  const commonTags = [
-    'AI', 'Technology', 'Product', 'Design', 'Development', 
-    'Data', 'Machine Learning', 'Healthcare', 'Innovation',
-    'Startup', 'Leadership', 'Engineering', 'Research',
-    'Software', 'Business', 'Strategy', 'Analysis', 'Tools',
-    'Platform', 'API', 'Cloud', 'Security', 'Testing',
-    'Architecture', 'Scalability', 'Performance', 'User Experience',
-    'Mobile', 'Web', 'Backend', 'Frontend', 'DevOps'
-  ]
-  
-  const contentLower = content.toLowerCase()
-  const foundTags = commonTags.filter(tag => 
-    contentLower.includes(tag.toLowerCase()) ||
-    contentLower.includes(tag.toLowerCase().replace(' ', ''))
-  )
-  
-  // Also look for common patterns in titles/content
-  const additionalTags = []
-  if (contentLower.includes('artificial intelligence') || contentLower.includes('ai/')) {
-    additionalTags.push('AI')
-  }
-  if (contentLower.includes('machine learning') || contentLower.includes('ml/')) {
-    additionalTags.push('Machine Learning')
-  }
-  if (contentLower.includes('data science') || contentLower.includes('analytics')) {
-    additionalTags.push('Data Science')
-  }
-  if (contentLower.includes('product management') || contentLower.includes('product strategy')) {
-    additionalTags.push('Product Management')
-  }
-  
-  // Combine and deduplicate
-  const allTags = [...foundTags, ...additionalTags]
-  const uniqueTags = [...new Set(allTags)]
-  
-  return uniqueTags.slice(0, 4) // Limit to 4 tags
+  // For now, return empty array since Substack posts don't have tags
+  // This can be enhanced later if Substack adds tag support
+  return []
 }
 
 function extractImage(content: string): string {

@@ -7,6 +7,7 @@ import { AnimationProvider } from "@/contexts/animation-context"
 import { ThemeProvider } from "@/contexts/theme-context"
 import { FloatingChatButton } from "@/components/floating-chat-button"
 import { getMetaInfo } from "@/lib/data"
+import { ChatButtonWrapper } from "@/components/chat-button-wrapper"
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export default function RootLayout({
           <AnimationProvider>
             <ScrollProgressIndicator />
             {children}
-            <FloatingChatButton />
+            <ChatButtonWrapper />
           </AnimationProvider>
         </ThemeProvider>
       </body>
