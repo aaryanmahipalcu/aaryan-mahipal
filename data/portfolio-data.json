@@ -33,6 +33,11 @@
         "platform": "Instagram",
         "url": "https://www.instagram.com/itsaaryanmahipal/",
         "icon": "Instagram"
+      },
+      {
+        "platform": "Substack",
+        "url": "https://substack.com/@aaryanmahipal0?utm_source=user-menu",
+        "icon": "Substack"
       }
     ]
   },

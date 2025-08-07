@@ -5,6 +5,7 @@ import "./globals.css"
 import { ScrollProgressIndicator } from "@/components/scroll-progress-indicator"
 import { AnimationProvider } from "@/contexts/animation-context"
 import { ThemeProvider } from "@/contexts/theme-context"
+import { FloatingChatButton } from "@/components/floating-chat-button"
 import { getMetaInfo } from "@/lib/data"
 
 const jetbrainsMono = JetBrains_Mono({
@@ -32,6 +33,7 @@ export default function RootLayout({
           <AnimationProvider>
             <ScrollProgressIndicator />
             {children}
+            <FloatingChatButton />
           </AnimationProvider>
         </ThemeProvider>
       </body>

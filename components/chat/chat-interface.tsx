@@ -18,6 +18,10 @@ interface Message {
 }
 
 const COMMANDS = {
+  "/home": {
+    route: "/",
+    description: "go to the home page",
+  },
   "/about": {
     route: "/about",
     description: "learn about my background and experience",
@@ -48,8 +52,19 @@ export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      content:
-        "hi! i'm aaryan's ai assistant. i'm here to give you a personalized tour of his work. what would you like to explore first?",
+      content: "hi! i'm aaryan's ai assistant. i'm here to give you a personalized tour of his work.",
+      role: "assistant",
+      timestamp: new Date(),
+    },
+    {
+      id: "2",
+      content: "you can type `/help` anytime to see all commands, or just chat with me!",
+      role: "assistant",
+      timestamp: new Date(),
+    },
+    {
+      id: "3",
+      content: "what would you like to know?",
       role: "assistant",
       timestamp: new Date(),
     },
@@ -230,7 +245,7 @@ export function ChatInterface() {
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="ask about work, writing, play..."
+              placeholder="type /help for commands or ask a question..."
               className="flex-1 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus-visible:ring-primary rounded-full px-4"
               disabled={isLoading}
             />
