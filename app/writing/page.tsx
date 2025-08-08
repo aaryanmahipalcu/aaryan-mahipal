@@ -68,7 +68,7 @@ export default function WritingPage() {
           </div>
         </AnimatedSection>
 
-        {/* Blog Posts Grid */}
+        {/* Blog Posts */}
         <AnimatedSection animation="fade-up">
           {loading ? (
             <div className="text-center py-12">
@@ -78,7 +78,7 @@ export default function WritingPage() {
               </div>
             </div>
           ) : posts.length > 0 ? (
-            <div className="max-w-5xl">
+            <div className="max-w-4xl">
               {posts.map((post, index) => (
                 <div key={post.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
                   <SubstackPostCard post={post} />

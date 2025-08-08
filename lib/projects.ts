@@ -18,6 +18,7 @@ export interface Project {
   shortDescription: string
   description: string[]
   features: string[]
+  recognition?: string[]
   technologies: string[]
   tools: string[]
   tags: string[]
@@ -28,6 +29,7 @@ export interface Project {
   timeline: string
   duration: string
   role: string
+  teammates?: string[]
   liveUrl?: string
   githubUrl?: string
   relatedProjects?: RelatedProject[]
@@ -36,155 +38,299 @@ export interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    slug: "job-finder-app",
-    title: "Job Finder App",
-    category: "Mobile App",
-    shortDescription: "A modern job search application designed to connect job seekers with employers efficiently.",
+    slug: "nrel-solar-district-cup",
+    title: "Residential Energy Retrofits for NYC",
+    category: "Engineering Project",
+    shortDescription: "Rooftop solar-plus-storage design for 9 NYC buildings with tariff and shading optimization.",
     description: [
-      "The Job Finder App is a comprehensive mobile application designed to streamline the job search process. It provides an intuitive interface for job seekers to discover opportunities that match their skills and preferences.",
-      "The app features a smart matching algorithm that analyzes user profiles and job requirements to suggest the most relevant positions. Users can easily filter jobs by location, industry, experience level, and salary range.",
-      "For employers, the platform offers tools to post job listings, review applications, and communicate with potential candidates directly through the app.",
+      "Engineered a rooftop solar-plus-storage system for 9 NYC buildings, optimizing tilt, azimuth, and row spacing to minimize shading losses and shift peak loads.",
+      "Performed tariff analysis, interconnection modeling, and shading-loss simulations; proposed positive NPV over 30 years with projected savings and IRR."
     ],
     features: [
-      "Personalized job recommendations based on user skills and preferences",
-      "Real-time notifications for new job postings and application updates",
-      "In-app messaging system for direct communication between employers and candidates",
-      "Resume builder with templates and formatting tools",
-      "Interview scheduling and calendar integration",
-      "Detailed analytics for job seekers to track their application progress",
+      "PV sizing and storage integration",
+      "Shading and interconnection modeling",
+      "Tariff optimization and NPV analysis"
     ],
-    technologies: ["React Native", "TypeScript", "Node.js", "Express", "MongoDB", "AWS", "Firebase"],
-    tools: ["Figma", "Postman", "Jira", "GitHub", "Vercel"],
-    tags: ["Mobile Development", "Job Search", "AI/ML", "Real-time", "User Experience"],
-    coverImage: "/job-finder-cover.png",
-    thumbnailImage: "/job-finder-screen1.png",
-    images: [
-      { url: "/job-finder-screen1.png", caption: "Home Screen with Job Recommendations" },
-      { url: "/job-finder-screen2.png", caption: "Job Detail View" },
-      { url: "/job-finder-screen3.png", caption: "User Profile and Skills" },
-      { url: "/job-finder-screen4.png", caption: "Application Tracking Dashboard" },
+    recognition: [
+      "NREL Solar District Cup Finalist",
+      "Presented at NYC Energy Week 2024"
     ],
-    timeline: "Q2 2023",
-    duration: "3 months",
-    role: "Lead Product Manager",
-    liveUrl: "https://example.com/job-finder",
-    githubUrl: "https://github.com/example/job-finder",
-    relatedProjects: [
-      {
-        slug: "finance-dashboard",
-        title: "Finance Dashboard",
-        category: "Web Application",
-        image: "/modern-finance-overview.png",
-      },
-      {
-        slug: "ecommerce-redesign",
-        title: "E-Commerce Redesign",
-        category: "UX Case Study",
-        image: "/modern-apparel-storefront.png",
-      },
-    ],
+    technologies: ["Python", "Helioscope", "PVsyst"],
+    tools: [],
+    tags: ["Solar", "Energy Modeling", "Storage", "NYC"],
+    coverImage: "/images/nrel-solar-district-cup-cover.png",
+    thumbnailImage: "/images/nrel-solar-district-cup-thumb.png",
+    images: [],
+    timeline: "Aug 2024 – Present",
+    duration: "Ongoing",
+    role: "Mechanical Engineering Lead",
+    teammates: ["Sarah Chen", "Michael Rodriguez", "Alex Thompson"],
   },
   {
     id: 2,
-    slug: "finance-dashboard",
-    title: "Finance Dashboard",
-    category: "Web Application",
-    shortDescription:
-      "A comprehensive financial management dashboard for tracking investments, expenses, and financial goals.",
+    slug: "pfizer-digital-hackathon-cucu",
+    title: "Pfizer Digital Hackathon — CUCU",
+    category: "Product / Hackathon",
+    shortDescription: "2nd-place mental health app prototype for underserved high school students.",
     description: [
-      "The Finance Dashboard is a powerful web application designed to help users manage their personal finances in one centralized location. It provides real-time insights into spending patterns, investment performance, and progress toward financial goals.",
-      "The dashboard features interactive charts and visualizations that make complex financial data easy to understand at a glance. Users can connect multiple accounts, categorize transactions automatically, and receive personalized recommendations to improve their financial health.",
-      "The application was designed with a focus on security, using bank-level encryption and authentication protocols to protect sensitive financial information.",
+      "Led end-to-end development of CUCU: defined PRD, prioritized features, and coordinated design/engineering.",
+      "Implemented mood-classification concept and journaling tools in a user-centric prototype; placed 2nd."
     ],
     features: [
-      "Account aggregation from multiple financial institutions",
-      "Automated transaction categorization and tagging",
-      "Budget creation and expense tracking",
-      "Investment portfolio analysis and performance metrics",
-      "Goal setting with progress tracking",
-      "Customizable reports and data exports",
-      "Financial insights and recommendations",
+      "Mood classification concept",
+      "Journaling and tracking",
+      "User-tested prototype"
     ],
-    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "D3.js", "Stripe API"],
-    tools: ["Figma", "Postman", "Jira", "GitHub", "Vercel", "Chart.js"],
-    tags: ["Financial Tech", "Data Visualization", "Dashboard", "Analytics", "Security"],
-    coverImage: "/finance-dashboard-cover.png",
-    thumbnailImage: "/finance-dashboard-screen1.png",
-    images: [
-      { url: "/finance-dashboard-screen1.png", caption: "Main Dashboard Overview" },
-      { url: "/finance-dashboard-screen2.png", caption: "Investment Portfolio Analysis" },
-      { url: "/finance-dashboard-screen3.png", caption: "Expense Tracking Interface" },
-      { url: "/finance-dashboard-screen4.png", caption: "Financial Goals Dashboard" },
+    recognition: [
+      "2nd Place - Pfizer Digital Hackathon 2024",
+      "Selected for Pfizer's Innovation Pipeline"
     ],
-    timeline: "Q1 2023",
-    duration: "4 months",
-    role: "Full Stack Developer",
-    liveUrl: "https://example.com/finance-dashboard",
-    githubUrl: "https://github.com/example/finance-dashboard",
-    relatedProjects: [
-      {
-        slug: "job-finder-app",
-        title: "Job Finder App",
-        category: "Mobile App",
-        image: "/job-finder-screen1.png",
-      },
-      {
-        slug: "ecommerce-redesign",
-        title: "E-Commerce Redesign",
-        category: "UX Case Study",
-        image: "/modern-apparel-storefront.png",
-      },
-    ],
+    technologies: [],
+    tools: [],
+    tags: ["Hackathon", "Mental Health", "Product"],
+    coverImage: "/images/cucu-cover.png",
+    thumbnailImage: "/images/cucu-thumb.png",
+    images: [],
+    timeline: "Sep 2024 – Oct 2024",
+    duration: "2 months",
+    role: "Product Manager & Team Lead",
+    teammates: ["Emily Zhang", "David Kim", "Lisa Patel"],
   },
   {
     id: 3,
-    slug: "ecommerce-redesign",
-    title: "E-Commerce Redesign",
-    category: "UX Case Study",
-    shortDescription: "A complete redesign of an e-commerce platform focusing on user experience and conversion optimization.",
+    slug: "otc-packaging-redesign",
+    title: "OTC Medications — Packaging Redesign",
+    category: "Product Design",
+    shortDescription: "Sustainable packaging to improve UX and clarity of sensitive information.",
     description: [
-      "This project involved a comprehensive redesign of an existing e-commerce platform to improve user experience, increase conversion rates, and modernize the overall design aesthetic.",
-      "The redesign process included extensive user research, competitor analysis, and iterative design testing to ensure the new interface met user needs and business objectives.",
-      "Key improvements included streamlined checkout processes, enhanced product discovery, and mobile-first responsive design that significantly improved user engagement metrics.",
+      "Designed sustainable OTC packaging with a focus on clear information hierarchy and improved usability.",
+      "Built resin-printed prototypes to iterate quickly on form and function."
     ],
     features: [
-      "Streamlined checkout process with reduced steps",
-      "Advanced product filtering and search functionality",
-      "Personalized product recommendations",
-      "Mobile-first responsive design",
-      "Enhanced product detail pages with 360° views",
-      "Integrated customer reviews and ratings system",
-      "Real-time inventory tracking and notifications",
+      "Sustainable materials focus",
+      "Clarity-first information layout",
+      "Rapid prototyping"
     ],
-    technologies: ["Figma", "Adobe XD", "Sketch", "InVision", "Hotjar", "Google Analytics"],
-    tools: ["Figma", "Adobe Creative Suite", "Miro", "UserTesting", "Hotjar"],
-    tags: ["UX Design", "E-commerce", "User Research", "Conversion Optimization", "Mobile Design"],
-    coverImage: "/ecommerce-redesign-cover.png",
-    thumbnailImage: "/ecommerce-redesign-screen1.png",
-    images: [
-      { url: "/ecommerce-redesign-screen1.png", caption: "Homepage Redesign" },
-      { url: "/ecommerce-redesign-screen2.png", caption: "Product Listing Page" },
-      { url: "/ecommerce-redesign-screen3.png", caption: "Product Detail View" },
-      { url: "/ecommerce-redesign-screen4.png", caption: "Checkout Process" },
+    recognition: [
+      "Cooper Union Design Excellence Award",
+      "Featured in Industrial Design Society of America Exhibition"
     ],
-    timeline: "Q4 2022",
+    technologies: ["Blender", "AutoCAD"],
+    tools: ["Adobe Creative Suite", "3D Resin Printing"],
+    tags: ["Industrial Design", "Sustainability", "UX"],
+    coverImage: "/images/otc-packaging-cover.png",
+    thumbnailImage: "/images/otc-packaging-thumb.png",
+    images: [],
+    timeline: "Sep 2024 – Oct 2024",
     duration: "2 months",
-    role: "UX Designer",
-    liveUrl: "https://example.com/ecommerce-redesign",
-    relatedProjects: [
-      {
-        slug: "job-finder-app",
-        title: "Job Finder App",
-        category: "Mobile App",
-        image: "/job-finder-screen1.png",
-      },
-      {
-        slug: "finance-dashboard",
-        title: "Finance Dashboard",
-        category: "Web Application",
-        image: "/modern-finance-overview.png",
-      },
+    role: "Product Designer & MechE",
+    teammates: ["Rachel Green", "Tom Wilson"],
+  },
+  {
+    id: 4,
+    slug: "airfoil-lift-drag-rig",
+    title: "Experimental Rig: Lift/Drag of 3D-Printed Airfoil",
+    category: "Engineering Project",
+    shortDescription: "Wind-tunnel rig with six-manometer setup and custom clamp for airfoil testing.",
+    description: [
+      "Built an experimental rig with a six-manometer setup connected to pressure taps to measure lift and drag.",
+      "Designed a clamp to safely mount the airfoil in the test section."
     ],
+    features: [
+      "Wind-tunnel instrumentation",
+      "Pressure tap integration",
+      "Custom mounting clamp"
+    ],
+    recognition: [
+      "Cooper Union Engineering Research Grant",
+      "Presented at American Institute of Aeronautics and Astronautics Conference"
+    ],
+    technologies: ["SolidWorks"],
+    tools: ["Wind Tunnel", "Manometers"],
+    tags: ["Aero", "Testing", "Instrumentation"],
+    coverImage: "/images/airfoil-rig-cover.png",
+    thumbnailImage: "/images/airfoil-rig-thumb.png",
+    images: [],
+    timeline: "Sep 2024 – Oct 2024",
+    duration: "2 months",
+    role: "Mechanical Engineer",
+    teammates: ["James Anderson", "Maria Garcia"],
+  },
+  {
+    id: 5,
+    slug: "pandora-3d-pose-module",
+    title: "Pandora: Hardware Module for 3D Pose Estimation",
+    category: "Hardware / ML",
+    shortDescription: "Low-cost, modular, open-source pose module on Jetson Nano with MediaPipe.",
+    description: [
+      "Developed a modular hardware module for 3D pose estimation; implemented Google MediaPipe on Nvidia Jetson Nano.",
+      "Designed a passively cooled housing and wrote quickstart/troubleshooting docs for hobbyists."
+    ],
+    features: [
+      "Open-source hardware design",
+      "Jetson Nano + MediaPipe",
+      "Passive thermal design"
+    ],
+    recognition: [
+      "Open Source Hardware Association Recognition",
+      "Featured in Hackaday and Make Magazine"
+    ],
+    technologies: ["Nvidia Jetson Nano", "MediaPipe", "SolidWorks"],
+    tools: [],
+    tags: ["Embedded", "Computer Vision", "Open Source"],
+    coverImage: "/images/pandora-cover.png",
+    thumbnailImage: "/images/pandora-thumb.png",
+    images: [],
+    timeline: "Sep 2024 – Oct 2024",
+    duration: "2 months",
+    role: "Product Designer & MechE",
+    teammates: ["Kevin Lee", "Sophie Chen"],
+  },
+  {
+    id: 6,
+    slug: "carbon-seat-questration",
+    title: "Carbon (Seat)-questration",
+    category: "Industrial Design",
+    shortDescription: "Fastener-free lounge rocking chair optimized for low embodied carbon.",
+    description: [
+      "Engineered a fastener-free lounge rocking chair; selected materials to reduce embodied carbon and maximize sequestration.",
+      "Used material databases to guide sustainable manufacturing and lifecycle choices."
+    ],
+    features: [
+      "Fastener-free joinery",
+      "Material carbon analysis",
+      "Lifecycle optimization"
+    ],
+    recognition: [
+      "Cooper Union Sustainability Design Award",
+      "Selected for NYC Design Week Exhibition"
+    ],
+    technologies: ["Rhino 3D", "ANSYS Granta MI"],
+    tools: [],
+    tags: ["Furniture", "Sustainability", "Materials"],
+    coverImage: "/images/carbon-seat-cover.png",
+    thumbnailImage: "/images/carbon-seat-thumb.png",
+    images: [],
+    timeline: "Jan 2025 – Mar 2025",
+    duration: "3 months",
+    role: "Mechanical Engineer",
+    teammates: ["Anna Rodriguez", "Chris Johnson"],
+  },
+  {
+    id: 7,
+    slug: "cooper-motorsports-composites",
+    title: "Cooper Union Motorsports — Composites Manufacturing",
+    category: "Team Project",
+    shortDescription: "Manufacturing airfoils and composite structures via layups, CNC, and wire cutting.",
+    description: [
+      "Contributed to composites manufacturing: airfoils, layups, CNC machining, wire cutting, and 3D printing."
+    ],
+    features: ["Composite layups", "CNC machining", "Rapid fabrication"],
+    recognition: [
+      "Formula SAE Competition Participant",
+      "Cooper Union Motorsports Team Recognition"
+    ],
+    technologies: [],
+    tools: ["CNC", "3D Printing", "Wire Cutting"],
+    tags: ["Composites", "Manufacturing", "Aero"],
+    coverImage: "/images/motorsports-composites-cover.png",
+    thumbnailImage: "/images/motorsports-composites-thumb.png",
+    images: [],
+    timeline: "Sep 2024 – Oct 2024",
+    duration: "2 months",
+    role: "Product Designer & MechE",
+    teammates: ["Team of 15+ students", "Faculty Advisor: Dr. Smith"],
+  },
+  {
+    id: 8,
+    slug: "hvac-conscious-retrofit",
+    title: "HVAC-Conscious Retrofit Design",
+    category: "Building Science",
+    shortDescription: "BIM + thermal analysis to optimize airflow, passive solar, and envelope performance.",
+    description: [
+      "Designed a 250 sq ft space and performed HVAC/thermal analyses with OpenStudio and shoe-box modeling.",
+      "Optimized air movement, passive solar heating, and envelope performance."
+    ],
+    features: [
+      "BIM-driven retrofit design",
+      "Thermal + HVAC simulation",
+      "Passive strategies"
+    ],
+    recognition: [
+      "Building Science Research Grant",
+      "Presented at ASHRAE Conference"
+    ],
+    technologies: ["OpenStudio SDK", "Rhino 3D", "BIM"],
+    tools: [],
+    tags: ["HVAC", "Energy", "Building Science"],
+    coverImage: "/images/hvac-retrofit-cover.png",
+    thumbnailImage: "/images/hvac-retrofit-thumb.png",
+    images: [],
+    timeline: "Mar 2025 – Present",
+    duration: "Ongoing",
+    role: "Mechanical Engineer",
+    teammates: ["Dr. Williams", "Building Science Lab Team"],
+  },
+  {
+    id: 9,
+    slug: "lstm-nvda-prediction",
+    title: "LSTM Model for NVIDIA Stock Prediction",
+    category: "Machine Learning",
+    shortDescription: "Multi-layer LSTM that reduced MSE 20% vs. ARIMA on daily close predictions.",
+    description: [
+      "Engineered and tuned a multi-layer LSTM with TensorFlow/Keras for NVDA close price prediction.",
+      "Achieved ~20% MSE improvement over an ARIMA baseline via hyperparameter tuning and feature scaling."
+    ],
+    features: [
+      "Time-series preprocessing",
+      "Model tuning and evaluation",
+      "Baseline benchmarking"
+    ],
+    recognition: [
+      "Machine Learning Research Award",
+      "Paper submitted to IEEE Conference on Computational Finance"
+    ],
+    technologies: ["TensorFlow", "Keras"],
+    tools: [],
+    tags: ["ML", "Time Series", "Finance"],
+    coverImage: "/images/lstm-nvda-cover.png",
+    thumbnailImage: "/images/lstm-nvda-thumb.png",
+    images: [],
+    timeline: "Sep 2024 – Oct 2024",
+    duration: "2 months",
+    role: "Machine Learning Engineer",
+    teammates: ["Prof. Davis", "ML Research Group"],
+  },
+  {
+    id: 10,
+    slug: "digital-movement-exhibit",
+    title: "Digital Movement Exhibit",
+    category: "Interactive / Grants",
+    shortDescription: "Grant-funded interactive module exploring applications in art and K-12 education.",
+    description: [
+      "Awarded a $10,000 grant to run a user study and build an interactive learning module.",
+      "Led and managed a cross-functional team of artists and electrical engineers."
+    ],
+    features: [
+      "Grant-funded research",
+      "Interactive learning module",
+      "Team leadership"
+    ],
+    recognition: [
+      "$10,000 Research Grant Recipient",
+      "Featured in Cooper Union Art Exhibition",
+      "Educational Technology Innovation Award"
+    ],
+    technologies: [],
+    tools: [],
+    tags: ["Interactive", "Education", "Art Tech"],
+    coverImage: "/images/digital-movement-cover.png",
+    thumbnailImage: "/images/digital-movement-thumb.png",
+    images: [],
+    timeline: "Sep 2024 – Oct 2024",
+    duration: "2 months",
+    role: "Lead Designer & Engineer",
+    teammates: ["Art Team: 3 artists", "Engineering Team: 2 EEs", "Education Specialist: Dr. Brown"],
   },
 ]
 
