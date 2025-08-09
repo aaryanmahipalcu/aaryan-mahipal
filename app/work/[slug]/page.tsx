@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { ExternalLink, Github, Calendar, Clock, User } from "lucide-react"
+import { ExternalLink, Github, Calendar, Clock, User, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { getProjectBySlug } from "@/lib/projects"
@@ -69,7 +69,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                     src={project.coverImage}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 </div>
@@ -95,6 +95,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                               <Github className="w-4 h-4 mr-2" />
                               View Source Code
+                            </a>
+                          </Button>
+                        )}
+                        {project.documentsUrl && (
+                          <Button asChild variant="outline" className="w-full">
+                            <a href={project.documentsUrl} target="_blank" rel="noopener noreferrer">
+                              <FileText className="w-4 h-4 mr-2" />
+                              View Project Document
                             </a>
                           </Button>
                         )}

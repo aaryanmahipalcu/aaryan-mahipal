@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -43,6 +43,24 @@ export function ProjectTabs({ description, features, recognition, images, techno
   const closeImage = () => {
     setSelectedImage(null)
   }
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (selectedImage === null) return
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeImage()
+      } else if (e.key === 'ArrowLeft') {
+        prevImage()
+      } else if (e.key === 'ArrowRight') {
+        nextImage()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedImage, images.length])
 
   return (
     <div className="space-y-8">
@@ -169,34 +187,63 @@ export function ProjectTabs({ description, features, recognition, images, techno
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
+            className="space-y-12"
           >
-            {/* Instagram-style Gallery */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {images.map((image, index) => (
+            {images.length === 0 ? (
+              <div className="text-center py-12">
+                <div className="w-16 h-16 mx-auto mb-4 bg-muted rounded-full flex items-center justify-center">
+                  <span className="text-2xl">📷</span>
+                </div>
+                <p className="text-muted-foreground">No images available for this project</p>
+              </div>
+            ) : (
+              images.map((image, index) => (
                 <motion.div
                   key={index}
-                  className="group relative aspect-square overflow-hidden rounded-lg bg-muted cursor-pointer"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  onClick={() => openImage(index)}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="space-y-4"
                 >
-                  <img
-                    src={image.url}
-                    alt={image.caption || `Gallery image ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+                  {/* Media Container */}
+                  <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-border/50 overflow-hidden">
+                    <div className="p-2">
+                      {image.url.endsWith('.mov') || image.url.endsWith('.mp4') || image.url.endsWith('.webm') ? (
+                        <video
+                          src={image.url}
+                          controls
+                          className="w-full h-auto rounded-lg"
+                          preload="metadata"
+                        >
+                          Your browser does not support the video tag.
+                        </video>
+                      ) : (
+                        <img
+                          src={image.url}
+                          alt={image.caption || `Gallery image ${index + 1}`}
+                          className="w-full h-auto object-contain rounded-lg cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                          onClick={() => openImage(index)}
+                        />
+                      )}
+                    </div>
+                  </div>
                   
                   {/* Caption */}
                   {image.caption && (
-                    <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <p className="text-white text-sm font-medium">{image.caption}</p>
+                    <div className="bg-muted/30 rounded-lg p-4 border border-border/30">
+                      <p className="text-foreground leading-relaxed font-medium">
+                        {image.caption}
+                      </p>
+                      <div className="mt-3 pt-3 border-t border-border/20">
+                        <span className="text-xs text-muted-foreground">
+                          Image {index + 1} of {images.length}
+                        </span>
+                      </div>
                     </div>
                   )}
                 </motion.div>
-              ))}
-            </div>
+              ))
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -208,64 +255,103 @@ export function ProjectTabs({ description, features, recognition, images, techno
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+            className="fixed inset-0 z-50 bg-white/95 backdrop-blur-md"
             onClick={closeImage}
           >
-            <div className="relative max-w-7xl max-h-full p-4">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={closeImage}
-                className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white"
-              >
-                <X className="w-6 h-6" />
-              </Button>
-              
-              <motion.img
-                key={currentImageIndex}
-                src={images[currentImageIndex].url}
-                alt={images[currentImageIndex].caption || `Gallery image ${currentImageIndex + 1}`}
-                className="max-w-full max-h-[90vh] object-contain"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-              
-              {/* Image Caption */}
+            {/* Close Button - Fixed Position */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={closeImage}
+              className="absolute top-4 right-4 z-20 bg-gray-100/80 hover:bg-gray-200/80 text-gray-700 backdrop-blur-sm shadow-sm"
+            >
+              <X className="w-5 h-5" />
+            </Button>
+
+            {/* Image Counter */}
+            {images.length > 1 && (
+              <div className="absolute top-4 left-4 z-20 bg-gray-100/80 text-gray-700 text-sm px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">
+                {currentImageIndex + 1} of {images.length}
+              </div>
+            )}
+
+            {/* Main Content Container */}
+            <div className="h-full flex flex-col p-4 md:p-8">
+              {/* Media Container - Dynamic sizing */}
+              <div className="flex-1 flex items-center justify-center min-h-0">
+                <motion.div
+                  key={currentImageIndex}
+                  className="relative max-w-full max-h-full"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {images[currentImageIndex].url.endsWith('.mov') || images[currentImageIndex].url.endsWith('.mp4') || images[currentImageIndex].url.endsWith('.webm') ? (
+                    <video
+                      src={images[currentImageIndex].url}
+                      controls
+                      className="max-w-[95vw] max-h-[85vh] shadow-2xl rounded-lg"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : (
+                    <img
+                      src={images[currentImageIndex].url}
+                      alt={images[currentImageIndex].caption || `Gallery image ${currentImageIndex + 1}`}
+                      className="max-w-[95vw] max-h-[85vh] object-contain shadow-2xl rounded-lg"
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                  )}
+                  
+                  {/* Navigation Arrows on Media */}
+                  {images.length > 1 && (
+                    <>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          prevImage()
+                        }}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 shadow-lg backdrop-blur-sm"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          nextImage()
+                        }}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-700 shadow-lg backdrop-blur-sm"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </Button>
+                    </>
+                  )}
+                </motion.div>
+              </div>
+
+              {/* Caption Bar */}
               {images[currentImageIndex].caption && (
-                <div className="absolute bottom-4 left-4 right-4 text-center">
-                  <p className="text-white text-lg font-medium bg-black/50 px-4 py-2 rounded-lg">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mt-6 bg-white/80 backdrop-blur-sm rounded-lg p-4 shadow-lg border border-gray-200/50"
+                >
+                  <p className="text-gray-800 text-center font-medium leading-relaxed">
                     {images[currentImageIndex].caption}
                   </p>
-                </div>
-              )}
-              
-              {/* Navigation Arrows */}
-              {images.length > 1 && (
-                <>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      prevImage()
-                    }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white"
-                  >
-                    <ChevronLeft className="w-6 h-6" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      nextImage()
-                    }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white"
-                  >
-                    <ChevronRight className="w-6 h-6" />
-                  </Button>
-                </>
+                  {images.length > 1 && (
+                    <p className="text-gray-500 text-xs text-center mt-2">
+                      Use arrow keys or click arrows to navigate
+                    </p>
+                  )}
+                </motion.div>
               )}
             </div>
           </motion.div>

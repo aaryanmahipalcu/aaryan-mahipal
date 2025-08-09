@@ -53,7 +53,7 @@ export function ProjectCard({
               src={image || "/placeholder.svg"}
               alt={title}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
             />
             
             {/* Gradient Overlay */}
