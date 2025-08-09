@@ -40,8 +40,8 @@ const projects: Project[] = [
     id: 1,
     slug: "nrel-solar-district-cup",
     title: "Residential Energy Retrofits for NYC",
-    category: "Engineering Project",
-    shortDescription: "Rooftop solar-plus-storage design for 9 NYC buildings with tariff and shading optimization.",
+    category: "Energy & Sustainability",
+    shortDescription: "A portfolio of rooftop solar + battery retrofit solutions for multi-family buildings in NYC’s Lower East Side",
     description: [
       "Engineered a rooftop solar-plus-storage system for 9 NYC buildings, optimizing tilt, azimuth, and row spacing to minimize shading losses and shift peak loads.",
       "Performed tariff analysis, interconnection modeling, and shading-loss simulations; proposed positive NPV over 30 years with projected savings and IRR."
@@ -52,26 +52,26 @@ const projects: Project[] = [
       "Tariff optimization and NPV analysis"
     ],
     recognition: [
-      "NREL Solar District Cup Finalist",
-      "Presented at NYC Energy Week 2024"
+      "U.S. Department of Energy's Solar District Cup Finalist",
+      "Honorable Mention at the 2024 U.S. DOE Solar District Cup Finals"
     ],
-    technologies: ["Python", "Helioscope", "PVsyst"],
-    tools: [],
-    tags: ["Solar", "Energy Modeling", "Storage", "NYC"],
+    technologies: ["Python", "Helioscope", "PVsyst", "System Advisor Model"],
+    tools: ["MS Excel", "MS Powerpoint","ArcGIS", "LaTeX"],
+    tags: ["Solar", "Energy Modeling", "Storage", "NYC", "Energy Efficiency", "Sustainability", "Decarbonization"],
     coverImage: "/images/nrel-solar-district-cup-cover.png",
     thumbnailImage: "/images/nrel-solar-district-cup-thumb.png",
     images: [],
     timeline: "Aug 2024 – Present",
     duration: "Ongoing",
-    role: "Mechanical Engineering Lead",
-    teammates: ["Sarah Chen", "Michael Rodriguez", "Alex Thompson"],
+    role: "Team Lead & Mechanical Engineer",
+    teammates: ["Gautaman Asirwatham", "Akil Foster", "Logan Po"],
   },
   {
     id: 2,
     slug: "pfizer-digital-hackathon-cucu",
-    title: "Pfizer Digital Hackathon — CUCU",
-    category: "Product / Hackathon",
-    shortDescription: "2nd-place mental health app prototype for underserved high school students.",
+    title: "CUCU: Your Mental Health Companion",
+    category: "Health & Wellness",
+    shortDescription: "An AI-powered mental health app for NYC high school students to foster emotional resilience and access personalized support",
     description: [
       "Led end-to-end development of CUCU: defined PRD, prioritized features, and coordinated design/engineering.",
       "Implemented mood-classification concept and journaling tools in a user-centric prototype; placed 2nd."
@@ -82,26 +82,26 @@ const projects: Project[] = [
       "User-tested prototype"
     ],
     recognition: [
-      "2nd Place - Pfizer Digital Hackathon 2024",
-      "Selected for Pfizer's Innovation Pipeline"
+      "2nd Place at Pfizer Digital Hackathon 2024, outperforming teams from top universities including Yale, Cornell, and Princeton",
+      "Recognition from Chief Digital and Technology Officer, Pfizer for presenting our solution with empathy, demonstrating a heart-felt desire to offer tools to build emotional resilience for students!"
     ],
-    technologies: [],
-    tools: [],
-    tags: ["Hackathon", "Mental Health", "Product"],
+    technologies: ["Python", "React", "Flask", "SQLite", "SQLAlchemy", "HTML", "CSS", "JavaScript", "Natural Language Processing"],
+    tools: ["GitHub", "Figma", "MS Excel", "MS Powerpoint", "Notion"],
+    tags: ["Hackathon", "Mental Health", "Digital Healthcare", "AI", "Machine Learning"],
     coverImage: "/images/cucu-cover.png",
     thumbnailImage: "/images/cucu-thumb.png",
     images: [],
     timeline: "Sep 2024 – Oct 2024",
     duration: "2 months",
     role: "Product Manager & Team Lead",
-    teammates: ["Emily Zhang", "David Kim", "Lisa Patel"],
+    teammates: ["Lizelle Ocfemia", "Lamiah Khan", "Lei (Raymond) Chi", "Jaehyeon Park"],
   },
   {
     id: 3,
     slug: "otc-packaging-redesign",
-    title: "OTC Medications — Packaging Redesign",
-    category: "Product Design",
-    shortDescription: "Sustainable packaging to improve UX and clarity of sensitive information.",
+    title: "Choice: OTC Drugs Reimagined",
+    category: "Health & Wellness",
+    shortDescription: "Sustainable packaging to improve UX and clarity of sensitive druginformation.",
     description: [
       "Designed sustainable OTC packaging with a focus on clear information hierarchy and improved usability.",
       "Built resin-printed prototypes to iterate quickly on form and function."
@@ -115,16 +115,16 @@ const projects: Project[] = [
       "Cooper Union Design Excellence Award",
       "Featured in Industrial Design Society of America Exhibition"
     ],
-    technologies: ["Blender", "AutoCAD"],
-    tools: ["Adobe Creative Suite", "3D Resin Printing"],
-    tags: ["Industrial Design", "Sustainability", "UX"],
+    technologies: ["Blender", "AutoCAD", "Adobe Photoshop"],
+    tools: ["Adobe Creative Suite", "3D Printing", "Resin Printing"],
+    tags: ["Product Design", "Sustainability"],
     coverImage: "/images/otc-packaging-cover.png",
     thumbnailImage: "/images/otc-packaging-thumb.png",
     images: [],
     timeline: "Sep 2024 – Oct 2024",
     duration: "2 months",
-    role: "Product Designer & MechE",
-    teammates: ["Rachel Green", "Tom Wilson"],
+    role: "Product Designer",
+    teammates: [],
   },
   {
     id: 4,
