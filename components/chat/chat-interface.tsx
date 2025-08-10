@@ -153,18 +153,49 @@ export function ChatInterface() {
 
     setIsLoading(true)
 
-    // TODO: Replace with actual OpenAI API call
-    // Simulate AI response for now
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [
+            ...messages.map(msg => ({
+              role: msg.role,
+              content: msg.content
+            })),
+            { role: 'user', content: currentInput }
+          ]
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to get AI response')
+      }
+
+      const data = await response.json()
+      
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
-        content: `aaryan is a mechanical engineer and product lead who works at the intersection of health, education, and product innovation. he has built AI-powered tools, health tech startups, and renewable energy projects. want to know more about specific skills or projects?`,
+        content: data.response,
         role: "assistant",
         timestamp: new Date(),
       }
+      
       setMessages((prev) => [...prev, aiResponse])
+    } catch (error) {
+      console.error('Error getting AI response:', error)
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        content: "Sorry, I'm having trouble connecting right now. Please try again later. Make sure your Groq API key is properly configured.",
+        role: "assistant",
+        timestamp: new Date(),
+      }
+      setMessages((prev) => [...prev, errorMessage])
+    } finally {
       setIsLoading(false)
-    }, 1500)
+    }
   }
 
   return (
@@ -217,22 +248,26 @@ export function ChatInterface() {
                 </div>
               </div>
             ))}
-
+            
+            {/* Loading indicator */}
             {isLoading && (
               <div className="space-y-1">
                 <div className="flex justify-start">
-                  <div className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-2xl rounded-bl-md px-4 py-2">
+                  <div className="max-w-[80%] rounded-2xl px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-bl-md">
                     <div className="flex items-center gap-2">
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                       </div>
+                      <span className="text-sm text-gray-500">AI is thinking...</span>
                     </div>
                   </div>
                 </div>
               </div>
             )}
+
+
           </div>
         </ScrollArea>
 

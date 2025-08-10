@@ -1,16 +1,17 @@
 "use client"
 
-import { ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 import { AnimatedSection } from "@/components/animated-section"
 import { ChatInterface } from "@/components/chat/chat-interface"
+import { TypingAnimation } from "@/components/typing-animation"
 import { getPersonalInfo } from "@/lib/data"
 
 export function HeroSection() {
   const personalInfo = getPersonalInfo()
 
-  const typingTexts = ["mechanical engineer", "product lead", "data analyst", "operations specialist"]
+  const typingTexts = ["mechanical engineer", "vibe coder", "designer"]
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -27,7 +28,7 @@ export function HeroSection() {
 
             <AnimatedSection animation="fade-up" delay={200}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                hi, i'm{" "}
+                hi, i&apos;m{" "}
                 <span className="text-primary">
                   {personalInfo.name.toLowerCase()}
                 </span>
@@ -35,17 +36,12 @@ export function HeroSection() {
             </AnimatedSection>
 
             <AnimatedSection animation="fade-up" delay={400}>
-              <div className="text-xl md:text-2xl text-muted-foreground h-12 flex items-center">
-                i'm a{" "}
-                <span className="ml-2 text-accent font-semibold">
-                  mechanical engineer
-                </span>
-              </div>
+              <TypingAnimation texts={typingTexts} speed={80} />
             </AnimatedSection>
 
             <AnimatedSection animation="fade-up" delay={600}>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-lg">
-                i create meaningful digital experiences that solve real problems and delight users. chat with my ai
+                i build creative solutions that solve real problems and craft experiences that users love. chat with my ai
                 assistant to explore my work and learn about my journey.
               </p>
             </AnimatedSection>
