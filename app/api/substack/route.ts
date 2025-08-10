@@ -161,6 +161,23 @@ function extractTags(content: string): string[] {
   return []
 }
 
+function extractImages(content: string): string[] {
+  const images: string[] = []
+  
+  // Extract all img tags
+  const imgRegex = /<img[^>]+src="([^"]+)"/gi
+  let match
+  while ((match = imgRegex.exec(content)) !== null) {
+    const src = match[1]
+    // Skip profile images and very small images
+    if (!src.includes('profile') && !src.includes('avatar') && src.length > 10) {
+      images.push(src)
+    }
+  }
+  
+  return images
+}
+
 function extractImage(content: string): string {
   const imgRegex = /<img[^>]+src="([^"]+)"/i
   const match = content.match(imgRegex)

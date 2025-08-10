@@ -1,8 +1,6 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Clock, Calendar } from "lucide-react"
+import { ExternalLink } from "lucide-react"
 import { SubstackPost } from "@/app/api/substack/route"
 
 interface SubstackPostCardProps {

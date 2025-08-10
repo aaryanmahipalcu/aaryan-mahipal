@@ -46,7 +46,7 @@ export function ContactForm() {
   if (isSubmitted) {
     return (
       <div className="flex flex-col items-center justify-center p-6">
-        <div className="w-16 h-16 mb-4 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 flex items-center justify-center">
+        <div className="w-16 h-16 mb-4 rounded-full bg-primary flex items-center justify-center">
           <SendIcon className="w-6 h-6 text-white" />
         </div>
         <h4 className="text-lg font-medium mb-2">Message Sent!</h4>
@@ -73,7 +73,7 @@ export function ContactForm() {
                 <FormControl>
                   <Input
                     placeholder="Your name"
-                    className="bg-zinc-800/50 border-zinc-700 focus:border-amber-500"
+                    className="bg-zinc-800/50 border-zinc-700 focus:border-primary"
                     {...field}
                   />
                 </FormControl>
@@ -92,7 +92,7 @@ export function ContactForm() {
                   <Input
                     type="email"
                     placeholder="your.email@example.com"
-                    className="bg-zinc-800/50 border-zinc-700 focus:border-amber-500"
+                    className="bg-zinc-800/50 border-zinc-700 focus:border-primary"
                     {...field}
                   />
                 </FormControl>

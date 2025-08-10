@@ -47,7 +47,7 @@ export function AnimationSettingsPanel() {
         className="rounded-full w-12 h-12 bg-zinc-800/80 backdrop-blur-sm hover:bg-zinc-700/80 shadow-lg"
         aria-label="Animation Settings"
       >
-        <Settings className="h-5 w-5 text-amber-400" />
+        <Settings className="h-5 w-5 text-primary" />
       </Button>
 
       {isOpen && (
@@ -55,7 +55,7 @@ export function AnimationSettingsPanel() {
           <div className="p-4">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-medium flex items-center">
-                <Zap className="w-4 h-4 mr-2 text-amber-400" />
+                <Zap className="w-4 h-4 mr-2 text-primary" />
                 Animation Settings
               </h3>
               <Button
@@ -95,7 +95,7 @@ export function AnimationSettingsPanel() {
                           size="sm"
                           className={`h-auto py-2 px-1 flex flex-col items-center justify-center text-xs ${
                             settings.preset === preset.value
-                              ? "bg-gradient-to-r from-amber-500/20 to-orange-500/20 border-amber-500/50"
+                              ? "bg-primary/20 border-primary/50"
                               : ""
                           }`}
                           onClick={() => applyPreset(preset.value)}

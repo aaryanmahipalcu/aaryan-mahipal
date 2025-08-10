@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Breadcrumb } from "@/components/breadcrumb"
+
 import { AnimatedSection } from "@/components/animated-section"
 import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
 import { SubstackPostCard } from "@/components/substack-post-card"
@@ -39,7 +39,7 @@ export default function WritingPage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Breadcrumb currentPage="Writing" />
+
 
       <div className="container mx-auto px-4 pt-20 pb-12">
         {/* Header */}
@@ -68,7 +68,7 @@ export default function WritingPage() {
           </div>
         </AnimatedSection>
 
-        {/* Blog Posts Grid */}
+        {/* Blog Posts */}
         <AnimatedSection animation="fade-up">
           {loading ? (
             <div className="text-center py-12">
@@ -78,7 +78,7 @@ export default function WritingPage() {
               </div>
             </div>
           ) : posts.length > 0 ? (
-            <div className="max-w-5xl">
+            <div className="max-w-4xl">
               {posts.map((post, index) => (
                 <div key={post.id} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
                   <SubstackPostCard post={post} />
