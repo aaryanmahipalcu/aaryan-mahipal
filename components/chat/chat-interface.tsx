@@ -44,12 +44,17 @@ const COMMANDS = {
   },
 }
 
-export function ChatInterface() {
+interface ChatInterfaceProps {
+  isActive?: boolean
+}
+
+export function ChatInterface({ isActive = false }: ChatInterfaceProps) {
   const [messages, setMessages] = useState<Message[]>([])
   const [isInitialized, setIsInitialized] = useState(false)
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const scrollAreaRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
 
   // Initialize messages after component mounts to avoid hydration issues
@@ -91,6 +96,32 @@ export function ChatInterface() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
+
+  // Focus input when chat is activated
+  useEffect(() => {
+    if (isActive) {
+      // Use ref to focus the input reliably
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus()
+          inputRef.current.select() // Select any existing text for easy replacement
+        }
+      }, 200)
+      
+      // Add a subtle welcome message if this is the first activation
+      if (messages.length === 3) { // Only if we have the initial messages
+        const welcomeMessage: Message = {
+          id: Date.now().toString(),
+          content: "Great! I'm ready to help. What would you like to know about Aaryan?",
+          role: "assistant",
+          timestamp: new Date(),
+        }
+        setTimeout(() => {
+          setMessages(prev => [...prev, welcomeMessage])
+        }, 500)
+      }
+    }
+  }, [isActive, messages.length])
 
   const handleCommand = (command: string) => {
     const cmd = COMMANDS[command as keyof typeof COMMANDS]
@@ -188,7 +219,11 @@ export function ChatInterface() {
   return (
     <div className="w-full max-w-lg mx-auto">
       {/* macOS-style Chat Window */}
-      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div className={`bg-white dark:bg-gray-900 rounded-xl shadow-2xl border overflow-hidden transition-all duration-500 ${
+        isActive 
+          ? 'border-primary shadow-primary/20 scale-105' 
+          : 'border-gray-200 dark:border-gray-700'
+      }`}>
         {/* Window Header with macOS controls */}
         <div className="bg-gray-50 dark:bg-gray-800 px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center">
           {/* macOS Window Controls */}
@@ -200,7 +235,12 @@ export function ChatInterface() {
 
           {/* Window Title */}
           <div className="flex-1 text-center">
-            <h3 className="font-medium text-gray-900 dark:text-gray-100">aaryan's assistant</h3>
+            <h3 className={`font-medium transition-colors duration-300 ${
+              isActive ? 'text-primary' : 'text-gray-900 dark:text-gray-100'
+            }`}>
+              aaryan's assistant
+              {isActive && <span className="ml-2 text-xs text-green-500">●</span>}
+            </h3>
           </div>
         </div>
 
@@ -265,13 +305,20 @@ export function ChatInterface() {
         </ScrollArea>
 
         {/* Input Area */}
-        <div className="border-t border-gray-200 dark:border-gray-700 p-4">
+        <div className={`border-t p-4 transition-all duration-300 ${
+          isActive 
+            ? 'border-primary bg-primary/5' 
+            : 'border-gray-200 dark:border-gray-700'
+        }`}>
           <form onSubmit={handleSendMessage} className="flex gap-2">
             <Input
+              ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="type /help for commands or ask a question..."
-              className="flex-1 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus-visible:ring-primary rounded-full px-4"
+              className={`flex-1 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus-visible:ring-primary rounded-full px-4 transition-all duration-300 ${
+                isActive ? 'ring-2 ring-primary/50 border-primary' : ''
+              }`}
               disabled={isLoading}
             />
             <Button

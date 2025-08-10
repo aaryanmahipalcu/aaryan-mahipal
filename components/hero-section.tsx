@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -10,6 +11,7 @@ import { getPersonalInfo } from "@/lib/data"
 
 export function HeroSection() {
   const personalInfo = getPersonalInfo()
+  const [isChatActive, setIsChatActive] = useState(false)
 
   const typingTexts = ["mechanical engineer", "vibe coder", "designer"]
 
@@ -51,12 +53,7 @@ export function HeroSection() {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={() => {
-                    const chatInput = document.querySelector('input[placeholder*="ask about"]') as HTMLInputElement
-                    if (chatInput) {
-                      chatInput.focus()
-                    }
-                  }}
+                  onClick={() => setIsChatActive(true)}
                 >
                   start chatting
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -84,7 +81,7 @@ export function HeroSection() {
           {/* Right Side - Chat Interface */}
           <div className="lg:pl-8">
             <AnimatedSection animation="slide-left" delay={600}>
-              <ChatInterface />
+              <ChatInterface isActive={isChatActive} />
             </AnimatedSection>
           </div>
         </div>
