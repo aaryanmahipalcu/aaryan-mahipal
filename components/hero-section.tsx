@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 import { AnimatedSection } from "@/components/animated-section"
@@ -28,7 +28,7 @@ export function HeroSection() {
 
             <AnimatedSection animation="fade-up" delay={200}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                hi, i'm{" "}
+                hi, i&apos;m{" "}
                 <span className="text-primary">
                   {personalInfo.name.toLowerCase()}
                 </span>

@@ -55,7 +55,7 @@ export function TypingAnimation({
 
   return (
     <div className={`text-xl md:text-2xl text-muted-foreground h-12 flex items-center ${className}`}>
-      i'm a{" "}
+      i&apos;m a{" "}
       <span className="ml-2 text-accent font-semibold">
         {displayText}
         <span className="animate-pulse">|</span>
