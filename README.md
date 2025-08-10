@@ -1,363 +1,175 @@
-# Portfolio Website with JSON Content Management
+# 🚀 Aaryan Mahipal - Portfolio Website
 
-This portfolio website is designed to be easily customizable through a JSON data file. This allows you to update your content without having to modify the codebase directly.
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![shadcn/ui](https://img.shields.io/badge/shadcn/ui-0.0.0-000000?style=for-the-badge)](https://ui.shadcn.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.16-0055FF?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
+[![Groq AI](https://img.shields.io/badge/Groq_AI-LLaMA3-8B-00FF00?style=for-the-badge)](https://groq.com/)
 
-## How to Update Content
+## 📱 About the Web App
 
-All content is stored in the `data/portfolio-data.json` file. You can edit this file to update the information displayed on your portfolio website.
+This is a modern, interactive portfolio website showcasing my work as a mechanical engineer, designer, and developer. Built with cutting-edge web technologies, it features an AI-powered chat assistant that provides personalized tours of my projects and experience.
 
-### Structure of the JSON File
+### ✨ Key Features
 
-The JSON file is organized into several sections:
+- **AI Chat Assistant**: Interactive chat interface powered by Groq AI (LLaMA3-8B) with context-aware responses about Aaryan's work
+- **Dynamic Content Management**: JSON-based content system for easy updates without code changes
+- **Responsive Design**: Mobile-first approach with smooth animations and transitions
+- **Interactive Portfolio**: Project showcases with image galleries and detailed descriptions
+- **Command System**: Quick navigation using chat commands (e.g., `/about`, `/work`, `/contact`)
+- **Vector Store Integration**: Smart context retrieval for AI responses
+- **Modern UI Components**: Built with shadcn/ui for consistent, accessible design
+- **Performance Optimized**: Next.js 14 with App Router for optimal loading and SEO
 
-1. **Meta**: Contains metadata about the website, such as the title and description.
-2. **Personal**: Contains personal information like name, title, location, contact details, and social media links.
-3. **About**: Contains information about yourself, including bio, professional focus, languages, and interests.
-4. **Navigation**: Contains the navigation menu items.
-5. **Experience**: Contains your work experience details.
-6. **Credentials**: Contains your certifications, education, and skills.
-7. **Technical Skills**: Contains your technical skills categorized by type.
+## 🛠️ Tech Stack
 
-### Updating Specific Sections
+### Frontend
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript development
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Modern component library
+- **Framer Motion** - Smooth animations and transitions
+- **Lucide React** - Beautiful, customizable icons
 
-#### Personal Information
+### Backend & AI
+- **Groq AI** - LLaMA3-8B model for intelligent chat responses
+- **Vector Store** - Context-aware information retrieval
+- **Next.js API Routes** - Serverless API endpoints
 
-\`\`\`json
-"personal": {
-  "name": "Your Name",
-  "title": "Your Title",
-  "location": "Your Location",
-  "avatar": "/path/to/your/avatar.png",
-  "email": "your.email@example.com",
-  "phone": "Your Phone Number",
-  "workingHours": "Your Working Hours",
-  "availableForWork": true,
-  "badges": ["Badge 1", "Badge 2", "Badge 3"],
-  "social": [
-    {
-      "platform": "GitHub",
-      "url": "https://github.com/yourusername",
-      "icon": "Github"
-    },
-    // Add more social links as needed
-  ]
-}
-\`\`\`
+### Development Tools
+- **Cursor + v0** - AI-powered code editor and development environment
+- **ESLint** - Code quality and consistency
+- **Prettier** - Code formatting
+- **PostCSS** - CSS processing
 
-#### About Information
+## 🚀 Quick Start Guide
 
-\`\`\`json
-"about": {
-  "bio": "Your bio text here...",
-  "focus": [
-    "Focus point 1",
-    "Focus point 2",
-    "Focus point 3"
-  ],
-  "languages": [
-    {
-      "name": "Language Name",
-      "proficiency": "Proficiency Level",
-      "level": 100,
-      "flag": "🏳️"
-    },
-    // Add more languages as needed
-  ],
-  "interests": [
-    "Interest 1",
-    "Interest 2",
-    // Add more interests as needed
-  ]
-}
-\`\`\`
+### Prerequisites
+- Node.js 18+ 
+- npm, yarn, or pnpm
+- Groq API key (for AI chat functionality)
 
-#### Experience
+### Installation
 
-\`\`\`json
-"experience": [
-  {
-    "title": "Job Title",
-    "company": "Company Name",
-    "period": "Employment Period",
-    "description": "Job description...",
-    "achievements": [
-      "Achievement 1",
-      "Achievement 2",
-      // Add more achievements as needed
-    ],
-    "technologies": ["Technology 1", "Technology 2"]
-  },
-  // Add more experiences as needed
-]
-\`\`\`
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/aaryan-mahipal.git
+   cd aaryan-mahipal
+   ```
 
-#### Credentials
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
 
-\`\`\`json
-"credentials": {
-  "certifications": [
-    {
-      "name": "Certification Name",
-      "issuer": "Issuer Name",
-      "date": "Issue Date",
-      "logo": "/path/to/logo.png"
-    },
-    // Add more certifications as needed
-  ],
-  "education": [
-    {
-      "degree": "Degree Name",
-      "institution": "Institution Name",
-      "year": "Year Range",
-      "logo": "/path/to/logo.png"
-    },
-    // Add more education entries as needed
-  ],
-  "skills": [
-    "Skill 1",
-    "Skill 2",
-    // Add more skills as needed
-  ]
-}
-\`\`\`
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Add your Groq API key:
+   ```env
+   GROQ_API_KEY=your_groq_api_key_here
+   GROQ_MODEL=llama3-8b-8192
+   GROQ_MAX_TOKENS=1000
+   ```
 
-#### Technical Skills
+4. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
 
-\`\`\`json
-"technicalSkills": {
-  "design": [
-    "Design Skill 1",
-    "Design Skill 2",
-    // Add more design skills as needed
-  ],
-  "development": [
-    "Development Skill 1",
-    "Development Skill 2",
-    // Add more development skills as needed
-  ],
-  "uxMethods": [
-    "UX Method 1",
-    "UX Method 2",
-    // Add more UX methods as needed
-  ],
-  "softSkills": [
-    "Soft Skill 1",
-    "Soft Skill 2",
-    // Add more soft skills as needed
-  ]
-}
-\`\`\`
+5. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Adding Images
+### Development Commands
 
-To add or update images:
-
-1. Place your image files in the `public` directory.
-2. Update the paths in the JSON file to point to your new images.
-
-## Projects
-
-Projects are managed separately in the `lib/projects.ts` file. You can update this file to add, remove, or modify projects.
-
-## Development
-
-To run the development server:
-
-\`\`\`bash
+```bash
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-\`\`\`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-\`\`\`
+# Build for production
+npm run build
 
-This refactoring allows users to update all content through the JSON file without modifying the codebase. The components now dynamically read from this data source, making content updates easier and more manageable.
-\`\`\`
+# Start production server
+npm start
+
+# Run linting
+npm run lint
+
+# Type checking
+npm run type-check
+```
+
+## 🎨 Content Management
+
+### Updating Portfolio Content
+
+All content is managed through JSON files for easy updates:
+
+- **`data/portfolio-data.json`** - Personal info, experience, skills
+- **`lib/projects.ts`** - Project showcases and galleries
+- **`public/`** - Project images and assets
+
+### Adding New Projects
+
+1. Add project images to `public/images/[project-name]/`
+2. Update `lib/projects.ts` with project details
+3. The changes will automatically appear on the `/work` page
+
+### Customizing the AI Assistant
+
+The chat assistant uses context from your portfolio data. To improve responses:
+
+1. Update project descriptions in `lib/projects.ts`
+2. Add relevant information to `data/portfolio-data.json`
+3. The vector store will automatically index new content
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. **Connect your repository**
+   - Push code to GitHub/GitLab
+   - Connect repository to Vercel
+
+2. **Configure environment variables**
+   - Add `GROQ_API_KEY` in Vercel dashboard
+   - Set other environment variables as needed
+
+3. **Deploy**
+   - Vercel will automatically deploy on push
+   - Custom domain can be configured in settings
+
+### Environment Variables for Production
+
+```env
+GROQ_API_KEY=your_production_groq_key
+GROQ_MODEL=llama3-8b-8192
+GROQ_MAX_TOKENS=1000
+NODE_ENV=production
+```
+
+## 🔧 Development with Cursor + v0
+
+This project was developed using **Cursor** (AI-powered code editor) and **v0** (AI development platform), which significantly accelerated the development process:
 
 
+## 📄 License
 
-\`\`\`ts file="lib/projects.ts"
-[v0-no-op-code-block-prefix]export interface ProjectGalleryImage {
-  url: string
-  caption?: string
-}
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-export interface RelatedProject {
-  slug: string
-  title: string
-  category: string
-  image: string
-}
 
-export interface Project {
-  id: number
-  slug: string
-  title: string
-  category: string
-  shortDescription: string
-  description: string[]
-  features: string[]
-  technologies: string[]
-  coverImage: string
-  thumbnailImage: string
-  gallery?: ProjectGalleryImage[]
-  client?: string
-  timeline: string
-  role: string
-  liveUrl?: string
-  githubUrl?: string
-  relatedProjects?: RelatedProject[]
-}
+**Built with ❤️ using Cursor + v0**
 
-const projects: Project[] = [
-  {
-    id: 1,
-    slug: "job-finder-app",
-    title: "Job Finder App",
-    category: "Mobile App",
-    shortDescription: "A modern job search application designed to connect job seekers with employers efficiently.",
-    description: [
-      "The Job Finder App is a comprehensive mobile application designed to streamline the job search process. It provides an intuitive interface for job seekers to discover opportunities that match their skills and preferences.",
-      "The app features a smart matching algorithm that analyzes user profiles and job requirements to suggest the most relevant positions. Users can easily filter jobs by location, industry, experience level, and salary range.",
-      "For employers, the platform offers tools to post job listings, review applications, and communicate with potential candidates directly through the app.",
-    ],
-    features: [
-      "Personalized job recommendations based on user skills and preferences",
-      "Real-time notifications for new job postings and application updates",
-      "In-app messaging system for direct communication between employers and candidates",
-      "Resume builder with templates and formatting tools",
-      "Interview scheduling and calendar integration",
-      "Detailed analytics for job seekers to track their application progress",
-    ],
-    technologies: ["React Native", "TypeScript", "Node.js", "Express", "MongoDB", "AWS", "Firebase"],
-    coverImage: "/job-finder-cover.png",
-    thumbnailImage: "/modern-finance-app.png",
-    gallery: [
-      { url: "/job-finder-screen1.png", caption: "Home Screen with Job Recommendations" },
-      { url: "/job-finder-screen2.png", caption: "Job Detail View" },
-      { url: "/job-finder-screen3.png", caption: "User Profile and Skills" },
-      { url: "/job-finder-screen4.png", caption: "Application Tracking Dashboard" },
-    ],
-    timeline: "3 months (Q2 2023)",
-    role: "Lead Product Designer",
-    liveUrl: "https://example.com/job-finder",
-    githubUrl: "https://github.com/example/job-finder",
-    relatedProjects: [
-      {
-        slug: "finance-dashboard",
-        title: "Finance Dashboard",
-        category: "Web Application",
-        image: "/modern-finance-overview.png",
-      },
-      {
-        slug: "ecommerce-redesign",
-        title: "E-Commerce Redesign",
-        category: "UX Case Study",
-        image: "/modern-apparel-storefront.png",
-      },
-    ],
-  },
-  {
-    id: 2,
-    slug: "finance-dashboard",
-    title: "Finance Dashboard",
-    category: "Web Application",
-    shortDescription:
-      "A comprehensive financial management dashboard for tracking investments, expenses, and financial goals.",
-    description: [
-      "The Finance Dashboard is a powerful web application designed to help users manage their personal finances in one centralized location. It provides real-time insights into spending patterns, investment performance, and progress toward financial goals.",
-      "The dashboard features interactive charts and visualizations that make complex financial data easy to understand at a glance. Users can connect multiple accounts, categorize transactions automatically, and receive personalized recommendations to improve their financial health.",
-      "The application was designed with a focus on security, using bank-level encryption and authentication protocols to protect sensitive financial information.",
-    ],
-    features: [
-      "Account aggregation from multiple financial institutions",
-      "Automated transaction categorization and tagging",
-      "Budget creation and expense tracking",
-      "Investment portfolio analysis and performance metrics",
-      "Goal setting with progress tracking",
-      "Customizable reports and data exports",
-      "Financial insights and recommendations",
-    ],
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Chart.js", "Plaid API", "PostgreSQL", "Vercel"],
-    coverImage: "/finance-dashboard-cover.png",
-    thumbnailImage: "/modern-finance-overview.png",
-    gallery: [
-      { url: "/finance-dashboard-screen1.png", caption: "Main Dashboard Overview" },
-      { url: "/finance-dashboard-screen2.png", caption: "Expense Analysis" },
-      { url: "/finance-dashboard-screen3.png", caption: "Investment Portfolio" },
-      { url: "/finance-dashboard-screen4.png", caption: "Financial Goals Tracker" },
-    ],
-    timeline: "4 months (Q3-Q4 2022)",
-    role: "UX/UI Designer & Frontend Developer",
-    liveUrl: "https://example.com/finance-dashboard",
-    githubUrl: "https://github.com/example/finance-dashboard",
-    relatedProjects: [
-      {
-        slug: "job-finder-app",
-        title: "Job Finder App",
-        category: "Mobile App",
-        image: "/modern-finance-app.png",
-      },
-      {
-        slug: "ecommerce-redesign",
-        title: "E-Commerce Redesign",
-        category: "UX Case Study",
-        image: "/modern-apparel-storefront.png",
-      },
-    ],
-  },
-  {
-    id: 3,
-    slug: "ecommerce-redesign",
-    title: "E-Commerce Redesign",
-    category: "UX Case Study",
-    shortDescription:
-      "A complete redesign of an e-commerce platform focused on improving user experience and conversion rates.",
-    description: [
-      "This project involved a comprehensive redesign of an established e-commerce platform that was struggling with user engagement and conversion rates. The goal was to create a more intuitive, visually appealing shopping experience that would drive sales and customer satisfaction.",
-      "The redesign process began with extensive user research, including interviews, surveys, and usability testing of the existing platform. This research revealed key pain points in the customer journey, such as a complicated checkout process and difficulty finding products.",
-      "Based on these insights, I developed a new information architecture and user flow that simplified navigation and streamlined the purchase process. The visual design was updated with a clean, modern aesthetic that highlighted product imagery and created a consistent brand experience across all touchpoints.",
-    ],
-    features: [
-      "Simplified product navigation and filtering system",
-      "Redesigned product detail pages with enhanced imagery and information",
-      "Streamlined checkout process reducing steps by 40%",
-      "Personalized product recommendations based on browsing history",
-      "Mobile-first responsive design",
-      "Improved search functionality with predictive suggestions",
-      "Enhanced wishlist and saved items functionality",
-    ],
-    technologies: ["Figma", "Adobe XD", "HTML/CSS", "JavaScript", "Shopify", "Hotjar", "Google Analytics"],
-    coverImage: "/ecommerce-redesign-cover.png",
-    thumbnailImage: "/modern-apparel-storefront.png",
-    gallery: [
-      { url: "/ecommerce-redesign-screen1.png", caption: "Homepage Design" },
-      { url: "/ecommerce-redesign-screen2.png", caption: "Product Category Page" },
-      { url: "/ecommerce-redesign-screen3.png", caption: "Product Detail Page" },
-      { url: "/ecommerce-redesign-screen4.png", caption: "Checkout Process" },
-    ],
-    client: "Fashion Retailer Inc.",
-    timeline: "6 months (Q1-Q2 2022)",
-    role: "Lead UX Designer",
-    liveUrl: "https://example.com/fashion-retailer",
-    relatedProjects: [
-      {
-        slug: "job-finder-app",
-        title: "Job Finder App",
-        category: "Mobile App",
-        image: "/modern-finance-app.png",
-      },
-      {
-        slug: "finance-dashboard",
-        title: "Finance Dashboard",
-        category: "Web Application",
-        image: "/modern-finance-overview.png",
-      },
-    ],
-  },
-]
-
-export { projects }
+*For questions or support, reach out to Aaryan at [mahipalaaryan@gmail.com](mailto:mahipalaaryan@gmail.com)*
