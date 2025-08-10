@@ -30,7 +30,6 @@ const COMMANDS = {
     route: "/work",
     description: "view my portfolio projects",
   },
-
   "/writing": {
     route: "/writing",
     description: "read my thoughts and articles",
@@ -46,30 +45,39 @@ const COMMANDS = {
 }
 
 export function ChatInterface() {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      content: "hi! i'm aaryan's ai assistant. i'm here to give you a personalized tour of his work.",
-      role: "assistant",
-      timestamp: new Date(),
-    },
-    {
-      id: "2",
-      content: "you can type `/help` anytime to see all commands, or just chat with me!",
-      role: "assistant",
-      timestamp: new Date(),
-    },
-    {
-      id: "3",
-      content: "what would you like to know?",
-      role: "assistant",
-      timestamp: new Date(),
-    },
-  ])
+  const [messages, setMessages] = useState<Message[]>([])
+  const [isInitialized, setIsInitialized] = useState(false)
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const scrollAreaRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
+
+  // Initialize messages after component mounts to avoid hydration issues
+  useEffect(() => {
+    if (!isInitialized) {
+      setMessages([
+        {
+          id: "1",
+          content: "hi! i'm aaryan's ai assistant. i'm here to give you a personalized tour of his work.",
+          role: "assistant",
+          timestamp: new Date(),
+        },
+        {
+          id: "2",
+          content: "you can type `/help` anytime to see all commands, or just chat with me!",
+          role: "assistant",
+          timestamp: new Date(),
+        },
+        {
+          id: "3",
+          content: "what would you like to know?",
+          role: "assistant",
+          timestamp: new Date(),
+        },
+      ])
+      setIsInitialized(true)
+    }
+  }, [isInitialized])
 
   const scrollToBottom = () => {
     if (scrollAreaRef.current) {
@@ -102,18 +110,15 @@ export function ChatInterface() {
     }
 
     if (cmd.route) {
-      const responseMessage: Message = {
+      const commandMessage: Message = {
         id: Date.now().toString(),
-        content: `taking you to ${cmd.description}...`,
+        content: `redirecting to ${command}...`,
         role: "assistant",
         timestamp: new Date(),
         isCommand: true,
       }
-      setMessages((prev) => [...prev, responseMessage])
-
-      setTimeout(() => {
-        router.push(cmd.route!)
-      }, 1000)
+      setMessages((prev) => [...prev, commandMessage])
+      setTimeout(() => router.push(cmd.route!), 1000)
       return true
     }
 
@@ -132,60 +137,42 @@ export function ChatInterface() {
     }
 
     setMessages((prev) => [...prev, userMessage])
-    const currentInput = input.trim()
     setInput("")
+    setIsLoading(true)
 
-    // Check if it's a command
-    if (currentInput.startsWith("/")) {
-      if (handleCommand(currentInput)) {
-        return
-      } else {
-        const errorMessage: Message = {
-          id: (Date.now() + 1).toString(),
-          content: `unknown command: ${currentInput}. type /help to see available commands.`,
-          role: "assistant",
-          timestamp: new Date(),
-        }
-        setMessages((prev) => [...prev, errorMessage])
+    // Check if it's a command first
+    if (input.startsWith("/")) {
+      if (handleCommand(input.trim())) {
+        setIsLoading(false)
         return
       }
     }
 
-    setIsLoading(true)
-
     try {
-      const response = await fetch('/api/chat', {
-        method: 'POST',
+      const response = await fetch("/api/chat", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          messages: [
-            ...messages.map(msg => ({
-              role: msg.role,
-              content: msg.content
-            })),
-            { role: 'user', content: currentInput }
-          ]
+          messages: [...messages, userMessage].map(({ role, content }) => ({ role, content })),
         }),
       })
 
-      if (!response.ok) {
-        throw new Error('Failed to get AI response')
+      if (response.ok) {
+        const data = await response.json()
+        const assistantMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          content: data.response,
+          role: "assistant",
+          timestamp: new Date(),
+        }
+        setMessages((prev) => [...prev, assistantMessage])
+      } else {
+        throw new Error("Failed to get response")
       }
-
-      const data = await response.json()
-      
-      const aiResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        content: data.response,
-        role: "assistant",
-        timestamp: new Date(),
-      }
-      
-      setMessages((prev) => [...prev, aiResponse])
     } catch (error) {
-      console.error('Error getting AI response:', error)
+      console.error("Error sending message:", error)
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         content: "Sorry, I'm having trouble connecting right now. Please try again later. Make sure your Groq API key is properly configured.",
@@ -220,54 +207,60 @@ export function ChatInterface() {
         {/* Messages Area */}
         <ScrollArea className="h-96" ref={scrollAreaRef}>
           <div className="p-4 space-y-4">
-            {messages.map((message) => (
-              <div key={message.id} className="space-y-1">
-                <div className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <div
-                    className={`max-w-[80%] rounded-2xl px-4 py-2 ${
-                      message.role === "user"
-                        ? "bg-primary text-white rounded-br-md"
-                        : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-bl-md"
-                    }`}
-                  >
-                    <p className="text-sm leading-relaxed whitespace-pre-line">{message.content}</p>
-                    {message.isCommand && (
-                      <div className="flex items-center gap-1 mt-2 text-xs opacity-70">
-                        <ArrowRight className="w-3 h-3" />
-                        redirecting...
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Timestamp */}
-                <div className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 px-1">
-                    {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
-                  </span>
-                </div>
+            {!isInitialized ? (
+              <div className="flex justify-center items-center h-32">
+                <div className="text-gray-500 dark:text-gray-400">Loading chat...</div>
               </div>
-            ))}
-            
-            {/* Loading indicator */}
-            {isLoading && (
-              <div className="space-y-1">
-                <div className="flex justify-start">
-                  <div className="max-w-[80%] rounded-2xl px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-bl-md">
-                    <div className="flex items-center gap-2">
-                      <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+            ) : (
+              <>
+                {messages.map((message) => (
+                  <div key={message.id} className="space-y-1">
+                    <div className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+                      <div
+                        className={`max-w-[80%] rounded-2xl px-4 py-2 ${
+                          message.role === "user"
+                            ? "bg-primary text-white rounded-br-md"
+                            : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-bl-md"
+                        }`}
+                      >
+                        <p className="text-sm leading-relaxed whitespace-pre-line">{message.content}</p>
+                        {message.isCommand && (
+                          <div className="flex items-center gap-1 mt-2 text-xs opacity-70">
+                            <ArrowRight className="w-3 h-3" />
+                            redirecting...
+                          </div>
+                        )}
                       </div>
-                      <span className="text-sm text-gray-500">AI is thinking...</span>
+                    </div>
+
+                    {/* Timestamp */}
+                    <div className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+                      <span className="text-xs text-gray-500 dark:text-gray-400 px-1">
+                        {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                      </span>
                     </div>
                   </div>
-                </div>
-              </div>
+                ))}
+                
+                {/* Loading indicator */}
+                {isLoading && (
+                  <div className="space-y-1">
+                    <div className="flex justify-start">
+                      <div className="max-w-[80%] rounded-2xl px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-bl-md">
+                        <div className="flex items-center gap-2">
+                          <div className="flex space-x-1">
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                          </div>
+                          <span className="text-sm text-gray-500">AI is thinking...</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
             )}
-
-
           </div>
         </ScrollArea>
 
