@@ -8,7 +8,7 @@ import { getProjectBySlug } from "@/lib/projects"
 import { notFound } from "next/navigation"
 import { AnimatedSection } from "@/components/animated-section"
 import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
-import { Breadcrumb } from "@/components/breadcrumb"
+
 import { ProjectTabs } from "@/components/project-tabs"
 import { motion } from "framer-motion"
 import Link from "next/link"
@@ -33,7 +33,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       
-      <Breadcrumb currentPage={project.title} />
+
 
       <div className="container mx-auto px-4 pt-20 pb-12 relative z-10">
         {/* Project Header */}
@@ -83,10 +83,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                       <h3 className="text-lg font-bold mb-4">Project Links</h3>
                       <div className="space-y-3">
                         {project.liveUrl && (
-                          <Button asChild className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
+                          <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300">
                             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                               <ExternalLink className="w-4 h-4 mr-2" />
-                              View Live Project
+                              {project.slug === "cooper-motorsports-composites" ? "Team's Website" : "View Live Project"}
                             </a>
                           </Button>
                         )}

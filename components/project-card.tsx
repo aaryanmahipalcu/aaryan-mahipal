@@ -10,7 +10,7 @@ import { useState } from "react"
 
 interface ProjectCardProps {
   title: string
-  category: string
+  category: string | string[]
   image: string
   slug: string
   tags: string[]
@@ -19,6 +19,7 @@ interface ProjectCardProps {
   shortDescription: string
   images?: any[]
   profileImage?: string
+  imagePosition?: string
 }
 
 export function ProjectCard({ 
@@ -29,7 +30,8 @@ export function ProjectCard({
   tags, 
   duration, 
   role, 
-  shortDescription
+  shortDescription,
+  imagePosition
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -53,7 +55,7 @@ export function ProjectCard({
               src={image || "/placeholder.svg"}
               alt={title}
               fill
-              className="object-cover object-[center_30%] transition-transform duration-700 group-hover:scale-110"
+              className={`object-cover transition-transform duration-700 group-hover:scale-110 ${imagePosition || "object-[center_75%]"}`}
             />
             
             {/* Gradient Overlay */}
@@ -68,14 +70,26 @@ export function ProjectCard({
             
             {/* Category Badge */}
             <motion.div 
-              className="absolute top-4 left-4 z-10"
+              className="absolute top-4 left-4 z-10 flex flex-wrap gap-2"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30 backdrop-blur-sm">
-                {category}
-              </Badge>
+              {Array.isArray(category) ? (
+                category.map((cat, index) => (
+                  <Badge 
+                    key={index}
+                    variant="secondary" 
+                    className="bg-white/95 text-gray-900 border-gray-200 shadow-lg backdrop-blur-sm font-medium"
+                  >
+                    {cat}
+                  </Badge>
+                ))
+              ) : (
+                <Badge variant="secondary" className="bg-white/95 text-gray-900 border-gray-200 shadow-lg backdrop-blur-sm font-medium">
+                  {category}
+                </Badge>
+              )}
             </motion.div>
 
             {/* View Project Button - Top Right */}
@@ -97,7 +111,7 @@ export function ProjectCard({
               animate={{ opacity: isHovered ? 0 : 1 }}
               transition={{ duration: 0.3 }}
             >
-              <h3 className="font-bold text-2xl text-white mb-2 group-hover:text-primary transition-colors drop-shadow-lg">
+              <h3 className="font-bold text-2xl text-gray-100 mb-2 group-hover:text-primary transition-colors drop-shadow-2xl">
                 {title}
               </h3>
             </motion.div>
@@ -111,7 +125,7 @@ export function ProjectCard({
             >
               {/* Description */}
               <motion.p 
-                className="text-base text-gray-200 leading-relaxed font-medium drop-shadow-lg"
+                className="text-base text-gray-100 leading-relaxed font-medium drop-shadow-2xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 20 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
@@ -121,14 +135,14 @@ export function ProjectCard({
             </motion.div>
           </div>
           
-          {/* Hover Border Effect */}
-          <motion.div
-            className="absolute inset-0 border-2 border-primary/0 group-hover:border-primary/30 rounded-lg transition-colors duration-300 pointer-events-none"
-            initial={false}
-            animate={{ 
-              borderColor: isHovered ? "rgba(var(--primary), 0.3)" : "rgba(var(--primary), 0)"
-            }}
-          />
+                      {/* Hover Border Effect */}
+            <motion.div
+              className="absolute inset-0 border-2 border-primary/0 group-hover:border-primary/30 rounded-lg transition-colors duration-300 pointer-events-none"
+              initial={false}
+              animate={{ 
+                borderColor: isHovered ? "rgba(185, 28, 28, 0.3)" : "rgba(185, 28, 28, 0)"
+              }}
+            />
         </Card>
       </motion.div>
     </Link>

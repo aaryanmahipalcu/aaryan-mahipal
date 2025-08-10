@@ -1,6 +1,6 @@
 "use client"
 
-import { Breadcrumb } from "@/components/breadcrumb"
+
 import { ProjectCard } from "@/components/project-card"
 import { AnimatedSection } from "@/components/animated-section"
 import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
@@ -21,7 +21,12 @@ export default function WorkPage() {
   const filteredProjects = useMemo(() => {
     if (selectedCategory === "all") return projects
     
-    return projects.filter((project) => project.category === selectedCategory)
+    return projects.filter((project) => {
+      if (Array.isArray(project.category)) {
+        return project.category.includes(selectedCategory)
+      }
+      return project.category === selectedCategory
+    })
   }, [projects, selectedCategory])
 
   const clearFilters = () => {
@@ -33,11 +38,11 @@ export default function WorkPage() {
   return (
     <main className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute inset-0 bg-primary/5"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       
-      <Breadcrumb currentPage="Work" />
+
 
       <div className="container mx-auto px-4 pt-20 pb-12 relative z-10">
         {/* Header */}
@@ -49,7 +54,7 @@ export default function WorkPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">/work</span>
+              <span className="text-primary">/work</span>
             </motion.h1>
             <motion.p 
               className="text-xl text-muted-foreground max-w-3xl"
@@ -159,6 +164,14 @@ export default function WorkPage() {
                         duration={project.duration}
                         role={project.role}
                         shortDescription={project.shortDescription}
+                        imagePosition={
+                          project.slug === "cooper-motorsports-composites" ? "object-[center_30%]" :
+                          project.slug === "choice-otc-medication" ? "object-[center_60%]" :
+                          project.slug === "airfoil-lift-drag-rig" ? "object-[center_75%]" :
+                          project.slug === "carbon-seat-questration" ? "object-[center_30%]" :
+                          project.slug === "digital-movement-exhibit" ? "object-[center_top]" :
+                          "object-[center_75%]"
+                        }
                       />
                     </motion.div>
                   ))}

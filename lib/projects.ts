@@ -14,7 +14,7 @@ export interface Project {
   id: number
   slug: string
   title: string
-  category: string
+  category: string | string[]
   shortDescription: string
   description: string[]
   features: string[]
@@ -41,7 +41,7 @@ const projects: Project[] = [
     id: 1,
     slug: "nrel-solar-district-cup",
     title: "Residential Energy Retrofits for NYC",
-    category: "Energy & Sustainability",
+    category: ["Energy & Sustainability", "Mechanical Engineering"],
     shortDescription: "A portfolio of rooftop solar + battery retrofit solutions for multi-family buildings in NYC’s Lower East Side",
     description: [
       "NYC’s Climate Mobilization Act and Local Law 97 are forcing thousands of large buildings to slash emissions or face heavy fines - up to $268 per excess metric ton of CO₂e. For the Lower East Side’s prewar walkups and postwar towers, that’s a high-stakes challenge. These buildings have tight rooftop space, tricky shading from neighbors, and strict fire/zoning codes. Owners need solutions that cut emissions, work within structural limits, and make financial sense.",
@@ -87,7 +87,7 @@ const projects: Project[] = [
     id: 2,
     slug: "pfizer-digital-hackathon-cucu",
     title: "CUCU: Your Mental Health Companion",
-    category: "Health & Wellness",
+    category: ["Health & Wellness", "AI & ML"],
     shortDescription: "An AI-powered mental health app for NYC high school students to foster emotional resilience and access personalized support",
     description: [
       "NYC’s public schools are in the middle of a teen mental health emergency. Between 2011 and 2021, the percentage of high school students reporting feeling sad or hopeless jumped from 27% to 38%. Yet, 423 public schools have no social worker, and over 80% fall short of the recommended 1:250 social worker–student ratio. Existing Department of Education programs like Harmony SEL and DESSA screening are valuable but can’t scale to meet demand—especially for students relying on unhealthy coping mechanisms like self-blame or withdrawal.",
@@ -217,19 +217,65 @@ const projects: Project[] = [
     technologies: ["SolidWorks", "AutoCAD", "OnShape", "Python", "Fluid Dynamics"],
     tools: ["MS Excel", "MS Powerpoint", "LaTeX", "3D Printing", "Laser Cutting"],
     tags: ["Instrumentation", "Mechanical Engineering", "Fluid Dynamics", "Aerodynamics"],
-    coverImage: "/images/airfoil-rig-cover.png",
-    thumbnailImage: "/images/airfoil-rig-thumb.png",
-    images: [],
+    coverImage: "/images/aerorig/02.jpg",
+    thumbnailImage: "/images/aerorig/02.jpg",
+    images: [
+      {
+        url: "/images/aerorig/initial-prototype-sketch.png",
+        caption: "Initial prototype sketch showing the concept and design approach for the AeroRig aerodynamic testing system"
+      },
+      {
+        url: "/images/aerorig/CAD-of-mounting-mechanism-for-airfoil.png",
+        caption: "CAD design of the mounting mechanism for secure airfoil positioning in the wind tunnel test section"
+      },
+      {
+        url: "/images/aerorig/CAD-of-hex-shaft.png",
+        caption: "CAD design of the hexagonal shaft component for the mounting system"
+      },
+      {
+        url: "/images/aerorig/cad-of-airfoil-mounted-inside-windtunnel.png",
+        caption: "CAD visualization showing how the airfoil is mounted inside the wind tunnel for testing"
+      },
+      {
+        url: "/images/aerorig/CA- of-NACA-2418-Airfoil.png",
+        caption: "NACA 2418 airfoil design specifications and geometry used in the aerodynamic testing"
+      },
+      {
+        url: "/images/aerorig/2d-drawing-of-npt-plug.png",
+        caption: "2D engineering drawing of the NPT plug component for the pressure measurement system"
+      },
+      {
+        url: "/images/aerorig/windtunnel-callibration-using-annemometer.png",
+        caption: "Wind tunnel calibration process using an anemometer to ensure accurate flow velocity measurements"
+      },
+      {
+        url: "/images/aerorig/manometer-still.jpg",
+        caption: "Manometer setup for pressure measurement during airfoil testing in the wind tunnel"
+      },
+      {
+        url: "/images/aerorig/02.jpg",
+        caption: "Testing setup showing the AeroRig system in operation during wind tunnel experiments"
+      },
+      {
+        url: "/images/aerorig/manometer-pressure-dropping-real-time.MOV",
+        caption: "Real-time video showing pressure measurements dropping as the frequency inside the wind tunnel is adjusted"
+      },
+      {
+        url: "/images/aerorig/04.MOV",
+        caption: "Wind tunnel testing setup video"
+      }
+    ],
     timeline: "Sep 2024 – Oct 2024",
     duration: "2 months",
     role: "Mechanical Engineer",
     teammates: ["Taaseen Jahan", "Shreyas Krishnan"],
+    documentsUrl: "/docs/Final Report.pdf",
   },
   {
     id: 5,
     slug: "pandora-3d-pose-module",
     title: "Pandora: A low-cost Hardware Module for Motion Capture",
-    category: "Embedded Systems",
+    category: ["Embedded Systems", "AI & ML"],
     shortDescription: "A low-cost, open-source, and modular hardware device for 3D Pose Estimation",
     description: [
       "Real-time 3D pose estimation is an increasingly important capability for applications in AR/VR, robotics, sports analytics, and accessibility tools.",
@@ -322,9 +368,46 @@ const projects: Project[] = [
     technologies: ["Rhino 3D", "ANSYS Granta MI"],
     tools: ["CNC Milling", "MS Excel", "MS Powerpoint"],
     tags: ["Furniture", "Sustainability", "Consumer Products", "Embodied Carbon", "Carbon Sequestration"],
-    coverImage: "/images/carbon-seat-cover.png",
-    thumbnailImage: "/images/carbon-seat-thumb.png",
-    images: [],
+    coverImage: "/images/carbon seat-questration/me-on-the-chair.jpg",
+    thumbnailImage: "/images/carbon seat-questration/me-on-the-chair.jpg",
+    images: [
+      {
+        url: "/images/carbon seat-questration/initial-sketch.png",
+        caption: "Initial design sketch and concept development for the carbon-sequestering lounge chair"
+      },
+      {
+        url: "/images/carbon seat-questration/cut-pieces.jpg",
+        caption: "CNC-cut wooden components ready for assembly, demonstrating precision manufacturing with minimal waste"
+      },
+      {
+        url: "/images/carbon seat-questration/cnc-still.jpg",
+        caption: "CNC milling process in action, showing the precision cutting of chair components"
+      },
+      {
+        url: "/images/carbon seat-questration/cnc.MOV",
+        caption: "CNC milling process video showing the precision cutting and manufacturing of chair components"
+      },
+      {
+        url: "/images/carbon seat-questration/press-fitting-the-dowels.png",
+        caption: "Press-fitting process for the fastener-free joinery system, enabling full disassembly for recycling"
+      },
+      {
+        url: "/images/carbon seat-questration/final-model-render.png",
+        caption: "Final 3D model render of the fastener-free lounge rocking chair optimized for low embodied carbon"
+      },
+      {
+        url: "/images/carbon seat-questration/embodied-carbon-analysis.png",
+        caption: "Embodied carbon analysis using ANSYS Granta MI showing environmental impact assessment"
+      },
+      {
+        url: "/images/carbon seat-questration/me-on-the-chair.jpg",
+        caption: "Testing the completed lounge chair for comfort and ergonomic design validation"
+      },
+      {
+        url: "/images/carbon seat-questration/final-display.jpg",
+        caption: "Final display of the completed carbon-sequestering lounge chair showcasing sustainable furniture design"
+      }
+    ],
     timeline: "Jan 2025 – Mar 2025",
     duration: "3 months",
     role: "Mechanical Engineer",
@@ -379,6 +462,7 @@ const projects: Project[] = [
     duration: "5 months",
     role: "Manufacturing Engineer",
     teammates: ["Team of 15+ students"],
+    liveUrl: "https://fsae.cooper.edu/",
   },
   {
     id: 8,
@@ -404,19 +488,53 @@ const projects: Project[] = [
     technologies: ["TensorFlow", "Python", "NLTK (VADER)"],
     tools: ["Jupyter Notebook", "GitHub", "Git", "OpenAI ChatGPT"],
     tags: ["Time Series Forecasting", "Finance", "Sentiment Analysis", "AI", "Machine Learning"],
-    coverImage: "/images/lstm-nvda-cover.png",
-    thumbnailImage: "/images/lstm-nvda-thumb.png",
-    images: [],
-    timeline: "Sep 2024 – Oct 2024",
+    coverImage: "/images/lstm nvidia stock/nvidia-profile.jpg",
+    thumbnailImage: "/images/lstm nvidia stock/nvidia-profile.jpg",
+    images: [
+      {
+        url: "/images/lstm nvidia stock/nvidia-stock-price.png",
+        caption: "NVIDIA stock price chart showing historical performance and trends"
+      },
+      {
+        url: "/images/lstm nvidia stock/volatility.png",
+        caption: "Volatility analysis of NVIDIA stock showing market fluctuations over time"
+      },
+      {
+        url: "/images/lstm nvidia stock/trends.png",
+        caption: "Trend analysis highlighting key patterns and directional movements in NVIDIA stock"
+      },
+      {
+        url: "/images/lstm nvidia stock/sentiment-score-vs-daily-returns.png",
+        caption: "Correlation between news sentiment scores and daily stock returns"
+      },
+      {
+        url: "/images/lstm nvidia stock/model-metrics.png",
+        caption: "Performance metrics and evaluation results of the LSTM model"
+      },
+      {
+        url: "/images/lstm nvidia stock/cumulative-returns-around-high-and-low-sentiment-events.png",
+        caption: "Cumulative returns analysis around high and low sentiment events"
+      },
+      {
+        url: "/images/lstm nvidia stock/actual-vs-predicted-with-best-hyperparamters.png",
+        caption: "Actual vs predicted stock prices using optimized hyperparameters"
+      },
+      {
+        url: "/images/lstm nvidia stock/actual-vs-predicted-prices.png",
+        caption: "Comparison of actual vs predicted NVIDIA stock prices by the LSTM model"
+      }
+    ],
+    timeline: "Nov 2024 – Dec 2024",
     duration: "2 months",
     role: "Machine Learning Engineer",
     teammates: ["Amelia Roopnarine"],
+    githubUrl: "https://github.com/aaryanmahipalcu/ME-371",
   },
   {
     id: 9,
     slug: "digital-movement-exhibit",
     title: "Digital Movement Exhibit",
-    category: "Events",
+    category: ["Events", "AI & ML"],
     shortDescription: "Grant-funded interactive module exploring applications in art and K-12 education.",
     description: [
       "Body-tracking technology is often siloed: powerful in research labs, but inaccessible to the broader public and underutilized in creative contexts. We wanted to break those walls down, showing how motion capture can cross disciplines, spark curiosity, and invite hands-on exploration.",
@@ -551,7 +669,12 @@ export function getRelatedProjects(currentSlug: string, limit = 2): RelatedProje
 }
 
 export function getProjectsByCategory(category: string): Project[] {
-  return projects.filter((project) => project.category === category)
+  return projects.filter((project) => {
+    if (Array.isArray(project.category)) {
+      return project.category.includes(category)
+    }
+    return project.category === category
+  })
 }
 
 export function getProjectsByTag(tag: string): Project[] {
@@ -564,6 +687,8 @@ export function getAllTags(): string[] {
 }
 
 export function getAllCategories(): string[] {
-  const allCategories = projects.map((project) => project.category)
+  const allCategories = projects.flatMap((project) => 
+    Array.isArray(project.category) ? project.category : [project.category]
+  )
   return [...new Set(allCategories)].sort()
 }

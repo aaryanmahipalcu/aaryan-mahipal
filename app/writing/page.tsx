@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Breadcrumb } from "@/components/breadcrumb"
+
 import { AnimatedSection } from "@/components/animated-section"
 import { LiquidGlassShortcuts } from "@/components/liquid-glass-shortcuts"
 import { SubstackPostCard } from "@/components/substack-post-card"
@@ -39,7 +39,7 @@ export default function WritingPage() {
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Breadcrumb currentPage="Writing" />
+
 
       <div className="container mx-auto px-4 pt-20 pb-12">
         {/* Header */}

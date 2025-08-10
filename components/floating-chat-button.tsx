@@ -21,7 +21,7 @@ export function FloatingChatButton() {
         <Button
           onClick={() => setIsOpen(!isOpen)}
           size="lg"
-          className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+          className="w-14 h-14 rounded-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300"
         >
           {isOpen ? (
             <X className="w-6 h-6" />

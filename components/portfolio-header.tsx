@@ -46,9 +46,9 @@ export function PortfolioHeader() {
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo/Name */}
         <Link href="/" className="flex items-center group">
-          <div className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary font-bold text-xl relative overflow-hidden transition-transform duration-300 group-hover:scale-105">
+          <div className="text-primary font-bold text-xl relative overflow-hidden transition-transform duration-300 group-hover:scale-105">
             {personalInfo.name}
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full"></span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </div>
           <span className="text-muted-foreground text-sm ml-2 hidden sm:inline-block transition-all duration-300 group-hover:text-foreground">
             / {personalInfo.title}

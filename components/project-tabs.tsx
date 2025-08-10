@@ -208,7 +208,7 @@ export function ProjectTabs({ description, features, recognition, images, techno
                   {/* Media Container */}
                   <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-border/50 overflow-hidden">
                     <div className="p-2">
-                      {image.url.endsWith('.mov') || image.url.endsWith('.mp4') || image.url.endsWith('.webm') ? (
+                      {image.url.toLowerCase().endsWith('.mov') || image.url.toLowerCase().endsWith('.mp4') || image.url.toLowerCase().endsWith('.webm') ? (
                         <video
                           src={image.url}
                           controls

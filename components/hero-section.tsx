@@ -15,25 +15,20 @@ export function HeroSection() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute inset-0 bg-primary/5"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh]">
           {/* Left Side - Hero Content */}
           <div className="space-y-8">
-            <AnimatedSection animation="fade-up">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-sm font-medium text-primary mb-6">
-                <Sparkles className="w-4 h-4" />
-                welcome to my digital space
-              </div>
-            </AnimatedSection>
+
 
             <AnimatedSection animation="fade-up" delay={200}>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 hi, i'm{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                <span className="text-primary">
                   {personalInfo.name.toLowerCase()}
                 </span>
               </h1>
@@ -42,7 +37,7 @@ export function HeroSection() {
             <AnimatedSection animation="fade-up" delay={400}>
               <div className="text-xl md:text-2xl text-muted-foreground h-12 flex items-center">
                 i'm a{" "}
-                <span className="ml-2 text-primary font-semibold">
+                <span className="ml-2 text-accent font-semibold">
                   mechanical engineer
                 </span>
               </div>
@@ -59,7 +54,7 @@ export function HeroSection() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white px-8 py-3 text-lg"
+                  className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => {
                     const chatInput = document.querySelector('input[placeholder*="ask about"]') as HTMLInputElement
                     if (chatInput) {
