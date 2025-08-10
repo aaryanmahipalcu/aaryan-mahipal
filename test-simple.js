@@ -1,23 +1,45 @@
-// Simple test to check if the vector store works
-const fs = require('fs');
+// Simple test to verify chat API functionality
+const testAPI = async () => {
+  const testQueries = [
+    "Tell me about Aaryan's experience at Ovelia Health",
+    "What projects has Aaryan worked on?",
+    "What is the weather like?",
+    "Tell me about Aaryan's education"
+  ];
 
-// Read the AI context directly
-const aiContextPath = './lib/ai-context.ts';
-console.log('Checking if ai-context.ts exists:', fs.existsSync(aiContextPath));
+  console.log("Testing Chat API...\n");
 
-// Try to read the file
-try {
-  const content = fs.readFileSync(aiContextPath, 'utf8');
-  console.log('File content length:', content.length);
-  console.log('First 200 chars:', content.substring(0, 200));
-} catch (error) {
-  console.error('Error reading file:', error.message);
-}
+  for (let i = 0; i < testQueries.length; i++) {
+    const query = testQueries[i];
+    console.log(`\n--- Test ${i + 1} ---`);
+    console.log(`Query: "${query}"`);
+    
+    try {
+      const response = await fetch('http://localhost:3000/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [{ role: 'user', content: query }]
+        }),
+      });
 
-// Check if vector-store.ts exists
-const vectorStorePath = './lib/vector-store.ts';
-console.log('Checking if vector-store.ts exists:', fs.existsSync(vectorStorePath));
+      if (response.ok) {
+        const data = await response.json();
+        console.log(`Response: ${data.response.substring(0, 200)}...`);
+        console.log(`Response length: ${data.response.length} characters`);
+        console.log(`Is generic response: ${data.response.includes("I don't have specific information") || data.response.includes("I'm happy to help")}`);
+      } else {
+        console.log(`Error: ${response.status} - ${response.statusText}`);
+      }
+    } catch (error) {
+      console.log(`Error: ${error.message}`);
+    }
+    
+    // Wait a bit between requests
+    await new Promise(resolve => setTimeout(resolve, 1000));
+  }
+};
 
-// Check if the compiled JS files exist
-const compiledPath = './.next/server/app/api/chat/route.js';
-console.log('Checking if compiled route exists:', fs.existsSync(compiledPath)); 
+testAPI(); 
