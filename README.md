@@ -6,7 +6,7 @@
 [![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
 [![shadcn/ui](https://img.shields.io/badge/shadcn/ui-0.0.0-000000?style=for-the-badge)](https://ui.shadcn.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-10.16-0055FF?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
-[![Groq AI](https://img.shields.io/badge/Groq_AI-LLaMA3-8B-00FF00?style=for-the-badge)](https://groq.com/)
+[![Groq AI](https://img.shields.io/badge/Groq_AI-LLaMA3--8B-00FF00?style=for-the-badge&logo=groq)](https://groq.com/)
 
 ## 📱 About the Web App
 
