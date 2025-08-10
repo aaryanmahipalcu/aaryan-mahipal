@@ -154,11 +154,44 @@ const projects: Project[] = [
     technologies: ["Blender", "AutoCAD", "Adobe Photoshop"],
     tools: ["Adobe Creative Suite", "3D Printing", "Resin Printing"],
     tags: ["Product Design", "Sustainability"],
-    coverImage: "/images/otc-packaging-cover.png",
-    thumbnailImage: "/images/otc-packaging-thumb.png",
-    images: [],
-    timeline: "Sep 2024 – Oct 2024",
-    duration: "2 months",
+    coverImage: "/images/choice-otc-medication/screenshot-packaging-details.png",
+    thumbnailImage: "/images/choice-otc-medication/screenshot-packaging-details.png",
+    images: [
+      {
+        url: "/images/choice-otc-medication/IMG_1916_converted.jpg",
+        caption: "Final Showcase Display of Choice"
+      },
+      {
+        url: "/images/choice-otc-medication/IMG_1639_converted.jpg",
+        caption: "Process Image: Scrappy drawings to ideate shapes and designs"
+      },
+      {
+        url: "/images/choice-otc-medication/IMG_1192.JPG",
+        caption: "Mapping ecisting products in the OTC medication space based on UX and repurposibility"
+      },
+      {
+        url: "/images/choice-otc-medication/design-ideation-sprint-30-ideas_converted.jpg",
+        caption: "Design ideation sprint showcasing 30+ creative concepts for the Choice packaging redesign"
+      },
+      {
+        url: "/images/choice-otc-medication/screenshot-main-showcase.png",
+        caption: "Biodegradable refill pouches and refillable frosted glass containers to reduce plastic waste"
+      },
+      {
+        url: "/images/choice-otc-medication/screenshot-packaging-details.png",
+        caption: "Render of Choice Comfort + for period pain"
+      },
+      {
+        url: "/images/choice-otc-medication/screenshot-product-line.png",
+        caption: "Render of Choice Comfort + for sleep"
+      },
+      {
+        url: "/images/choice-otc-medication/screenshot-sustainability.png",
+        caption: "Render of Choice Comfort + for pain relief"
+      }
+    ],
+    timeline: "Aug 2023 – Dec 2023",
+    duration: "5 months",
     role: "Product Designer",
     teammates: [],
   },
@@ -259,9 +292,9 @@ const projects: Project[] = [
         caption: "BlazePose pose estimation algorithm running on computer for comparison and validation"
       }
     ],
-    timeline: "Sep 2024 – Oct 2024",
-    duration: "2 months",
-    role: "Product Designer & MechE",
+    timeline: "Jan 2022 – May 2022",
+    duration: "5 months",
+    role: "Team Lead and Product Engineer",
     teammates: ["Amaan Rahman", "Dr. Mili Shah"],
   },
   {
@@ -342,8 +375,8 @@ const projects: Project[] = [
         caption: "Vacuum bagging process for carbon fiber layup, ensuring proper consolidation and eliminating air bubbles for optimal strength"
       }
     ],
-    timeline: "Sep 2024 – Oct 2024",
-    duration: "2 months",
+    timeline: "Jan 2022 – May 2022",
+    duration: "5 months",
     role: "Manufacturing Engineer",
     teammates: ["Team of 15+ students"],
   },
