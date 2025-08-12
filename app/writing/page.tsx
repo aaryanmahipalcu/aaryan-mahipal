@@ -13,22 +13,39 @@ export default function WritingPage() {
   const [posts, setPosts] = useState<SubstackPost[]>([])
   const [loading, setLoading] = useState(true)
   const [refreshing, setRefreshing] = useState(false)
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
   useEffect(() => {
     loadPosts()
+    
+    // Set up automatic refresh every 5 minutes
+    const interval = setInterval(() => {
+      loadPosts(true) // Silent refresh
+    }, 5 * 60 * 1000)
+    
+    return () => clearInterval(interval)
   }, [])
 
-  const loadPosts = async () => {
-    setLoading(true)
+  const loadPosts = async (silent = false) => {
+    if (!silent) setLoading(true)
     try {
-      const response = await fetch('/api/substack')
+      // Add timestamp to prevent caching
+      const timestamp = new Date().getTime()
+      const response = await fetch(`/api/substack?t=${timestamp}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache'
+        }
+      })
       const data = await response.json()
       setPosts(data)
+      setLastUpdated(new Date())
     } catch (error) {
       console.error('Error loading posts:', error)
-      setPosts([])
+      if (!silent) setPosts([])
     }
-    setLoading(false)
+    if (!silent) setLoading(false)
   }
 
   const refreshPosts = async () => {
@@ -48,6 +65,11 @@ export default function WritingPage() {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h1 className="text-5xl font-bold">/writing</h1>
+                {lastUpdated && (
+                  <p className="text-sm text-muted-foreground mt-2">
+                    Last updated: {lastUpdated.toLocaleTimeString()}
+                  </p>
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <Button
@@ -90,6 +112,9 @@ export default function WritingPage() {
               <p className="text-muted-foreground mb-4">
                 No posts available at the moment.
               </p>
+              <Button onClick={refreshPosts} variant="outline">
+                Try Again
+              </Button>
             </div>
           )}
         </AnimatedSection>

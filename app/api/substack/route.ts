@@ -22,14 +22,29 @@ export async function GET() {
   const substackFeedUrl = 'https://aaryanmahipal0.substack.com/feed'
   
   try {
-    // Fetch RSS feed
-    const response = await fetch(substackFeedUrl)
+    // Fetch RSS feed with no-cache headers to ensure fresh data
+    const response = await fetch(substackFeedUrl, {
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      }
+    })
     const xmlText = await response.text()
     
     // Parse RSS feed
     const posts = parseSubstackRSS(xmlText)
     
-    return NextResponse.json(posts)
+    // Set response headers to prevent caching
+    const responseHeaders = new Headers()
+    responseHeaders.set('Cache-Control', 'no-cache, no-store, must-revalidate')
+    responseHeaders.set('Pragma', 'no-cache')
+    responseHeaders.set('Expires', '0')
+    
+    return NextResponse.json(posts, {
+      headers: responseHeaders
+    })
   } catch (error) {
     console.error('Error fetching Substack RSS feed:', error)
     return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 })
@@ -85,6 +100,9 @@ function parseSubstackRSS(xmlText: string): SubstackPost[] {
         const excerpt = cleanContent.substring(0, 200).trim()
         const finalExcerpt = excerpt.length > 150 ? excerpt.substring(0, excerpt.lastIndexOf(' ')) + '...' : excerpt
         
+        // Parse and validate the date
+        const parsedDate = parseDate(pubDate)
+        
         posts.push({
           id: generateId(link),
           title: cleanTitle,
@@ -92,7 +110,7 @@ function parseSubstackRSS(xmlText: string): SubstackPost[] {
           preview: finalExcerpt, // Use content preview
           content: cleanHtml(content),
           author: 'Aaryan Mahipal',
-          publishedDate: parseDate(pubDate),
+          publishedDate: parsedDate,
           readTime: calculateReadTime(content),
           tags: extractTags(cleanTitle + ' ' + content),
           platform: 'substack',
@@ -106,10 +124,14 @@ function parseSubstackRSS(xmlText: string): SubstackPost[] {
     }
   }
   
-  // Sort by publish date (newest first)
-  return posts.sort((a, b) => 
-    new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
-  )
+  // Sort by publish date (newest first) and filter out invalid dates
+  return posts
+    .filter(post => post.publishedDate !== 'Invalid Date')
+    .sort((a, b) => {
+      const dateA = new Date(a.publishedDate).getTime()
+      const dateB = new Date(b.publishedDate).getTime()
+      return dateB - dateA
+    })
 }
 
 function extractTag(xml: string, tagName: string): string {
@@ -143,8 +165,18 @@ function cleanHtml(html: string): string {
 
 function parseDate(dateString: string): string {
   try {
-    return new Date(dateString).toISOString().split('T')[0]
-  } catch {
+    // Handle various date formats
+    const date = new Date(dateString)
+    
+    // Check if the date is valid
+    if (isNaN(date.getTime())) {
+      console.warn(`Invalid date string: ${dateString}`)
+      return new Date().toISOString().split('T')[0]
+    }
+    
+    return date.toISOString().split('T')[0]
+  } catch (error) {
+    console.error(`Error parsing date: ${dateString}`, error)
     return new Date().toISOString().split('T')[0]
   }
 }

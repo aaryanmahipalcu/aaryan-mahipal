@@ -9,6 +9,10 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    // Enable dynamic rendering for better real-time updates
+    dynamicParams: true,
+  },
 }
 
 export default nextConfig
